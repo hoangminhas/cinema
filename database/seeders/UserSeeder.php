@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Movie;
-
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
-class MovieSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +14,6 @@ class MovieSeeder extends Seeder
      */
     public function run()
     {
-        Movie::factory(10)->create();
-
+        User::factory(10)->create();
     }
 }

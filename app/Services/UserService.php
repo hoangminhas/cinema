@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\User;
 use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserService extends BaseService
@@ -21,6 +22,16 @@ class UserService extends BaseService
         $data['password'] = Hash::make($data['password']);
         $this->userRepository->createUser($data);
         return $this->sendRespone($data, "Create success");
+    }
+
+    public function login($request)
+    {
+        $data = $request->only('email', 'password');
+        if (Auth::attempt($data)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

@@ -25,8 +25,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $user = $request->only('email', 'password');
-        if (Auth::attempt($user)) {
+        if ($this->userService->login($request)) {
             return 'nice';
         } else {
             return redirect()->route('login');

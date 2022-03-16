@@ -18,14 +18,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//login
+////login
 Route::get('/login', [AuthController::class, 'showFormLogin'])->name('showFormLogin');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
-//register
+////register
 Route::get('/register', [AuthController::class, 'showFormRegister'])->name('showFormRegister');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 
 
 //logout
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
+

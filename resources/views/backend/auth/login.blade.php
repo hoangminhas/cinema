@@ -11,7 +11,7 @@
 <h2>Login</h2>
 <form action="{{route('login')}}" method="post">
     @csrf
-    <input type="email" name="email" placeholder="email"><br>
+    <input type="email" name="email" value="{{old('email')}}" placeholder="email"><br>
     <p style="color: red">{{$errors->has('email') ? $errors->first('email') : ''}}</p>
     <input type="password" name="password" placeholder="password"><br>
     <p style="color: red">{{$errors->has('password') ? $errors->first('password') : ''}}</p>

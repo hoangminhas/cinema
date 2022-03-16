@@ -11,17 +11,19 @@
 <body>
 <p class="texto">Register</p>
 <div class="Registro">
-    <form method="post" action="{{route('login')}}">
+    <form method="post" action="{{route('register')}}">
         @csrf
         <span class="fontawesome-user"></span><input type="text" value="{{old('name')}}" name="name" placeholder="name" autocomplete="off">
 {{--        <p style="color: red">{{($errors->has('name') ? $errors->first('name') : "")}}</p>--}}
-        <span class="fontawesome-envelope-alt"></span><input type="text" value="{{old('email')}}" id="email" name="email" placeholder="Email" autocomplete="off">
+        <span class="fontawesome-envelope-alt"></span><input type="email" value="{{old('email')}}" id="email" name="email" placeholder="Email" autocomplete="off">
 {{--        <p style="color: red">{{$errors->has('email') ? $errors->first('mail') : ""}}</p>--}}
         <span class="fontawesome-lock"></span><input type="password" name="password" id="password" placeholder="Password" autocomplete="off">
 {{--        <p style="color: red">{{$errors->has('password') ? $errors->first('password') : ""}}</p>--}}
-        <span class="fontawesome-lock"></span><input type="password" name="confirmPassword" id="password" placeholder="Confirm Password" autocomplete="off">
+        <span class="fontawesome-lock"></span><input type="password" name="confirmPassword" placeholder="Confirm Password" autocomplete="off">
 {{--        <p style="color: red">{{$errors->has('confirmPassword') ? $errors->first('confirmPassword') : ""}}</p>--}}
-        @if($errors->any())
+        <input type="hidden" name="role_id" value="2"><br>
+
+    @if($errors->any())
             @foreach($errors->all() as $error)
                 <p style="color: red">{{$error}}</p>
             @endforeach

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('backend.layout.index');
 });
 
 //login
@@ -25,3 +26,9 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 //register
 Route::get('/register', [AuthController::class, 'showFormRegister'])->name('showFormRegister');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
+
+Route::prefix('movie')->group(function(){
+   Route::get('index',[MovieController::class,'index'])->name('movie.index');
+   Route::get('create',[MovieController::class,'create'])->name('movie.create');
+   Route::post('create',[MovieController::class,'store'])->name('movie.store');
+});

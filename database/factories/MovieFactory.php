@@ -22,7 +22,7 @@ class MovieFactory extends Factory
             'summary'=> $this->faker->text(),
             'image' => $this->faker->text(),
             'date' => $this->faker->dateTime(),
-            'category_id'=> Category::all()->random()->id,
+            // 'category_id'=> Category::all()->random()->id,
 
         ];
     }

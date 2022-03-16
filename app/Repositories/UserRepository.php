@@ -17,4 +17,5 @@ class UserRepository extends BaseRepository
         $this->model::create($data);
     }
 
+
 }

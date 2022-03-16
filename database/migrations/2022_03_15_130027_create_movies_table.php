@@ -19,9 +19,9 @@ class CreateMoviesTable extends Migration
             $table->string('duration');
             $table->string('summary');
             $table->string('image');
-            $table->unsignedBigInteger('category_id');
+            // $table->unsignedBigInteger('category_id');
             $table->dateTime('date');
-            $table->foreign('category_id')->references('id')->on('categories');
+            // $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }

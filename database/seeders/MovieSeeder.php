@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Movie;
 use Illuminate\Database\Seeder;
 
-class SeatTpyeSeeder extends Seeder
+class MovieSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +14,6 @@ class SeatTpyeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Movie::factory(10)->create();
     }
 }

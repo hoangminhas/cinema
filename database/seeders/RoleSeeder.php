@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
 use Illuminate\Database\Seeder;
 
 class RoleSeeder extends Seeder
@@ -13,6 +14,12 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $roles = new Role();
+        $roles->name = 'admin';
+        $roles->save();
+
+        $roles = new Role();
+        $roles->name = 'user';
+        $roles->save();
     }
 }

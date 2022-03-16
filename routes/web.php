@@ -1,7 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+
 use App\Http\Controllers\GoogleSocialiteController;
+
+use App\Http\Controllers\MovieController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('backend.layout.index');
 });
 
 ////login
@@ -28,6 +32,7 @@ Route::get('/register', [AuthController::class, 'showFormRegister'])->name('show
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 
 
+
 //logout
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
@@ -35,4 +40,11 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle'])->name('google.auth');
 Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);
 
+
+
+Route::prefix('movie')->group(function(){
+   Route::get('index',[MovieController::class,'index'])->name('movie.index');
+   Route::get('create',[MovieController::class,'create'])->name('movie.create');
+   Route::post('create',[MovieController::class,'store'])->name('movie.store');
+});
 

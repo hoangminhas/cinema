@@ -33,6 +33,7 @@ class GoogleSocialiteController extends Controller
                 $newUser = User::create([
                     'name' => $user->name,
                     'email' => $user->email,
+                    'role_id' => 2,
                     'social_id'=> $user->id,
                     'social_type'=> 'google',
                     'password' => encrypt('my-google')

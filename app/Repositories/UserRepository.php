@@ -10,4 +10,13 @@ class UserRepository extends BaseRepository
     {
         return 'users';
     }
+
+
+    public function createUser($data)
+    {
+        $this->model::create($data);
+    }
+
+
+
 }

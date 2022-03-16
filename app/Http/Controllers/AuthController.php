@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Http\Request;
@@ -23,12 +25,12 @@ class AuthController extends Controller
         return view('backend.auth.login');
     }
 
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
         if ($this->userService->login($request)) {
             return 'nic2e';
         } else {
-            return redirect()->route('login');
+            return redirect()->back();
         }
     }
 
@@ -37,9 +39,16 @@ class AuthController extends Controller
         return view('backend.auth.register');
     }
 
-    public function register(Request $request)
+    public function register(RegisterRequest $request)
     {
         $this->userService->register($request);
         return redirect()->route('login');
     }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login');
+    }
+
 }

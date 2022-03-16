@@ -26,7 +26,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         if ($this->userService->login($request)) {
-            return 'nice';
+            return 'nic2e';
         } else {
             return redirect()->route('login');
         }

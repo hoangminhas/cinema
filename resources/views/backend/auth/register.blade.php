@@ -11,9 +11,14 @@
 <h2>Register</h2>
 <form action="{{route('register')}}" method="post">
     @csrf
-    <input type="text" name="name" placeholder="name"><br>
+    <input type="text" name="name" value="{{old('$')}}" placeholder="name"><br>
+    <p style="color: red">{{$errors->has('name') ? $errors->first('name') : ""}}</p>
     <input type="email" name="email" placeholder="email"><br>
+    <p style="color: red">{{$errors->has('email') ? $errors->first('mail') : ""}}</p>
     <input type="password" name="password" placeholder="password"><br>
+    <p style="color: red">{{$errors->has('password') ? $errors->first('password') : ""}}</p>
+    <input type="password" name="password" placeholder="confirmPassword"><br>
+    <p style="color: red">{{$errors->has('confirmPassword') ? $errors->first('confirmPassword') : ""}}</p>
     <input type="hidden" name="role_id" value="2"><br>
     <button>Register</button>
 </form>

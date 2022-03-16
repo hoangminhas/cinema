@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -10,6 +11,13 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     //
+    public $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
     public function showFormLogin()
     {
         return view('backend.auth.login');
@@ -32,9 +40,7 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        $user = $request->except('_token');
-        $user['password'] = Hash::make($user['password']);
-        User::create($user);
+        $this->userService->register($request);
         return redirect()->route('login');
     }
 }

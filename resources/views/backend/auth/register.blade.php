@@ -14,7 +14,7 @@
     <input type="text" name="name" placeholder="name"><br>
     <input type="email" name="email" placeholder="email"><br>
     <input type="password" name="password" placeholder="password"><br>
-    <input type="hidden" name="role_id" value="1"><br>
+    <input type="hidden" name="role_id" value="2"><br>
     <button>Register</button>
 </form>
 </body>

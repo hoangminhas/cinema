@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GoogleSocialiteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,5 +30,9 @@ Route::post('/register', [AuthController::class, 'register'])->name('register');
 
 //logout
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
+//login google
+Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle'])->name('google.auth');
+Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);
 
 

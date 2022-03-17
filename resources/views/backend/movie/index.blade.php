@@ -71,11 +71,6 @@
                                 </span>
                             </span>
                         </td>
-                        {{-- <td style="text-align: center"><a class="btn btn-sm btn-outline-danger round"
-                                onclick="return confirm('Bạn có chắc muốn xóa phim {{ $movie->name }} này không?')"
-                                href="{{ route('movie.delete', $movie->id) }}">Delete</a></td>
-                        <td style="text-align: center"><a class="btn btn-sm btn-outline-success round"
-                                href="{{ route('movie.edit', $movie->id) }}">Update</a></td> --}}
                     </tr>
                 @endforeach
             </tbody>

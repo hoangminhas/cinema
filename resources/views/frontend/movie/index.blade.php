@@ -18,7 +18,7 @@
                                               <span>{{$category->name}}</span>
                                 @endforeach
                             </p>
-                            <a href="{{route('orderTicket')}}" class="btn btn-danger">Đặt vé</a>
+                            <a href="{{route('showFormOrder')}}" class="btn btn-danger">Đặt vé</a>
                         </div>
                     </div>
                 </div><br><br>
@@ -31,7 +31,7 @@
         <div class="row">
 
             @foreach($movies as $movie)
-                @if($movie->date < now())
+                @if($movie->date > now())
                 <div class="col-4" style="margin: 15px 0px">
                     <div class="card" style="width: 25rem; height: 35em">
                         <img src="{{$movie->image}}" class="card-img-top" alt="movie">

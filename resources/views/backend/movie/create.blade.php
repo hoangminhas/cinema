@@ -1,7 +1,7 @@
-@extends('layout.index')
+@extends('layoutbackend.index')
 @section('title','CREATEMOVIE')
 @section('content')
-<div class="container">
+<div class="container mt-3">
     <form method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
@@ -27,11 +27,21 @@
           </div>
           <div>
             @foreach ($categories as $category)
-            <input   value="{{$category->id}}" type="checkbox">
+            <input   value="{{$category->id}}" name="category[]" type="checkbox">
             <label style="padding-right: 20px">{{$category->name}}</label>
             @endforeach
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="row">
+            <div class="col-2"> <button type="submit" class="btn btn-try-builder btn-bg-gradient-x-purple-red btn-glow white">Create Movie</button></div>
+            <div class="col-2"><a href="{{route('movie.index')}}">Back</a></div>
+            <div class="col-2"></div>
+            <div class="col-2"></div>
+            <div class="col-2"></div>
+            <div class="col-2"></div>
+        </div>
+
+
+
       </form>
 </div>
 @endsection

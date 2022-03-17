@@ -59,4 +59,9 @@ class MovieController extends Controller
     {
         //
     }
+
+    public function frontendIndex()
+    {
+
+    }
 }

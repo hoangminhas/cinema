@@ -13,6 +13,14 @@ class MovieRepository extends BaseRepository
         return 'movies';
     }
 
+    /**
+     * @return mixed
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
+
     // public function getAll()
     // {
     //     // return DB::table($this->table)

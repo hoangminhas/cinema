@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('backend.layout.index');
+    return view('layoutbackend.index');
 });
 
 //login
@@ -31,4 +31,7 @@ Route::prefix('movie')->group(function(){
    Route::get('index',[MovieController::class,'index'])->name('movie.index');
    Route::get('create',[MovieController::class,'create'])->name('movie.create');
    Route::post('create',[MovieController::class,'store'])->name('movie.store');
+   Route::get('delete/{id}',[MovieController::class,'destroy'])->name('movie.delete');
+   Route::get('edit/{id}',[MovieController::class,'edit'])->name('movie.edit');
+   Route::post('edit/{id}',[MovieController::class,'update'])->name('movie.update');
 });

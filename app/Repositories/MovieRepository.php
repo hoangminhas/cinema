@@ -13,10 +13,24 @@ class MovieRepository extends BaseRepository
         return 'movies';
     }
 
-    // public function getAll()
-    // {
-    //     // return DB::table($this->table)
-    //     // ->join('')
-    // }
+    public function getAll()
+    {
+        // return DB::table($this->table)
+        // ->join('category_movies', 'category_movies.movie_id' , '=','movies.id')
+        // ->join('categories','categories.id','=','category_movies.category_id')
+        // ->select('movies.*','categories.name as categoryname')
+        // ->orderByDesc('movies.id')->get();
+
+        return Movie::all();
+    }
+
+    public function getById($id)
+    {
+        return DB::table($this->table)
+        ->join('category_movies', 'category_movies.movie_id' , '=','movies.id')
+        ->join('categories','categories.id','=','category_movies.category_id')
+        ->select('movies.*','categories.name as categoryname')
+        ->where('movies.id',$id)->first();
+    }
 
 }

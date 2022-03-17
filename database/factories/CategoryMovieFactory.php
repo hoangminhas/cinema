@@ -16,8 +16,8 @@ class CategoryMovieFactory extends Factory
     public function definition()
     {
         return [
-            'category_id' => Category::all()->random()->id,
-            'movie_id' => Movie::all()->random()->id,
+            'movie_id'=> Movie::all()->random()->id,
+            'category_id'=> Category::all()->random()->id,
         ];
     }
 }

@@ -19,8 +19,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/home', function () {
+    return view('frontend.movie.home');
+
 Route::get('/', function () {
     return view('layoutbackend.index');
+
 });
 
 ////login
@@ -32,14 +37,12 @@ Route::get('/register', [AuthController::class, 'showFormRegister'])->name('show
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 
 
-
 //logout
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 //login google
 Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle'])->name('google.auth');
 Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);
-
 
 
 Route::prefix('movie')->group(function(){
@@ -50,4 +53,15 @@ Route::prefix('movie')->group(function(){
    Route::get('edit/{id}',[MovieController::class,'edit'])->name('movie.edit');
    Route::post('edit/{id}',[MovieController::class,'update'])->name('movie.update');
 });
+
+
+//frontend
+Route::get('/homepage', function () {
+    return view('frontend.movie.home');
+})->name('homepage');
+
+Route::get('/current-movies', [MovieController::class, 'indexMovies'])->name('current.movie.index');
+//dat ve
+Route::get('/buy-ticket', [MovieController::class, 'showFormOrder'])->name('orderTicket');
+
 

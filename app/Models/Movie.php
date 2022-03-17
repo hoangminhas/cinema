@@ -8,8 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Movie extends Model
 {
     use HasFactory;
+
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+
     public function categories()
     {
     return $this->belongsToMany(Category::class);
+
     }
 }

@@ -13,6 +13,25 @@ class MovieRepository extends BaseRepository
         return 'movies';
     }
 
+
+    /**
+     * @return mixed
+     */
+    public function getModel()
+    {
+        return Movie::class;
+    }
+
+    public function getAllByEloquent()
+    {
+        return $this->model::all();
+    }
+    // public function getAll()
+    // {
+    //     // return DB::table($this->table)
+    //     // ->join('')
+    // }
+
     public function getAll()
     {
         // return DB::table($this->table)
@@ -32,5 +51,6 @@ class MovieRepository extends BaseRepository
         ->select('movies.*','categories.name as categoryname')
         ->where('movies.id',$id)->first();
     }
+
 
 }

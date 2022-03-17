@@ -2,20 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Movie;
 use App\Repositories\CategoryRepository;
 use App\Repositories\MovieRepository;
+use App\Services\MovieService;
 use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
     public $movieRepository;
     public $categoryRepository;
+    public $movieService;
     public function __construct(MovieRepository $movieRepository,
-                                CategoryRepository $categoryRepository
+                                CategoryRepository $categoryRepository,
+                                MovieService $movieService
     )
     {
         $this->movieRepository = $movieRepository;
         $this->categoryRepository = $categoryRepository;
+        $this->movieService = $movieService;
     }
 
     public function index()
@@ -24,7 +29,6 @@ class MovieController extends Controller
         dd($movies);
         return view('backend.movie.index',compact('movies'));
     }
-
 
     public function create()
     {
@@ -59,5 +63,16 @@ class MovieController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function indexMovies()
+    {
+        $movies = $this->movieService->getAllMovie();
+        return view('frontend.movie.index', compact('movies'));
+    }
+
+    public function showFormOrder()
+    {
+        return view('frontend.movie.create');
     }
 }

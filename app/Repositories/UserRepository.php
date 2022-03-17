@@ -18,5 +18,8 @@ class UserRepository extends BaseRepository
     }
 
 
-
+    public function getModel()
+    {
+        // TODO: Implement getModel() method.
+    }
 }

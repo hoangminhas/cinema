@@ -8,4 +8,9 @@ class CategoryRepository extends BaseRepository
     {
         return 'categories';
     }
+
+    public function getModel()
+    {
+        // TODO: Implement getModel() method.
+    }
 }

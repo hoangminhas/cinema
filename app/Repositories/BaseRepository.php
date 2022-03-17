@@ -7,15 +7,15 @@ use App\Repositories\Impl\BaseInterface;
 
 abstract class BaseRepository implements BaseInterface
 {
-    // public $model;
+     public $model;
     public $table;
     public function __construct()
     {
-        // $this->model = $this->getModel();
+         $this->model = $this->getModel();
         $this->table = $this->getTable();
     }
 
-    // public abstract function getModel();
+     public abstract function getModel();
     public abstract function getTable();
 
 
@@ -34,5 +34,6 @@ abstract class BaseRepository implements BaseInterface
     {
         return DB::table($this->table)->where('id',$id)->delete();
     }
+
 
 }

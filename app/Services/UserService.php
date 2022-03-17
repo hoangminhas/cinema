@@ -18,7 +18,7 @@ class UserService extends BaseService
 
     public function register($request)
     {
-        $data = $request->except('_token');
+        $data = $request->except('_token', 'confirmPassword');
         $data['password'] = Hash::make($data['password']);
         $this->userRepository->createUser($data);
         return $this->sendRespone($data, "Create success");

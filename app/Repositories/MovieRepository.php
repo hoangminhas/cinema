@@ -13,6 +13,25 @@ class MovieRepository extends BaseRepository
         return 'movies';
     }
 
+
+    /**
+     * @return mixed
+     */
+    public function getModel()
+    {
+        return Movie::class;
+    }
+
+    public function getAllByEloquent()
+    {
+        return $this->model::all();
+    }
+    // public function getAll()
+    // {
+    //     // return DB::table($this->table)
+    //     // ->join('')
+    // }
+
     public function getAll()
     {
         // return DB::table($this->table)
@@ -56,6 +75,7 @@ class MovieRepository extends BaseRepository
         $movie->categories()->sync($request->category);
     }
 
+
     public function update($request, $id)
     {
         if ($request->hasFile('image')) {
@@ -76,4 +96,5 @@ class MovieRepository extends BaseRepository
     public function delete($id)
     {
     }
+
 }

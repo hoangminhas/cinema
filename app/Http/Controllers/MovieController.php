@@ -21,7 +21,7 @@ class MovieController extends Controller
     public function index()
     {
         $movies = $this->movieRepository->getAll();
-        dd($movies);
+        // dd($movies[3]->categories);
         return view('backend.movie.index',compact('movies'));
     }
 

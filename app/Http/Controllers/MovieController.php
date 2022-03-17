@@ -26,7 +26,7 @@ class MovieController extends Controller
     public function index()
     {
         $movies = $this->movieRepository->getAll();
-        // dd($movies);
+        dd($movies);
         return view('backend.movie.index',compact('movies'));
     }
 
@@ -51,7 +51,8 @@ class MovieController extends Controller
 
     public function edit($id)
     {
-        //
+        $movie = $this->movieRepository->getById($id);
+        dd($movie);
     }
 
     public function update(Request $request, $id)

@@ -58,7 +58,7 @@ class MovieRepository extends BaseRepository
 
     public function update($request, $id)
     {
-        if($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $fileName = time() . '_' . $request->file('image')->getClientOriginalName();
             $path = $request->file('image')->storeAs("images", $fileName, "public");
         }
@@ -72,5 +72,8 @@ class MovieRepository extends BaseRepository
         $movie->save();
 
         $movie->categories()->sync($request->category);
+    }
+    public function delete($id)
+    {
     }
 }

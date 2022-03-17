@@ -64,6 +64,7 @@ class MovieController extends Controller
 
     public function destroy($id)
     {
-        //
+        $this->movieRepository->delete($id);
+        return redirect()->route('movie.index');
     }
 }

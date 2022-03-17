@@ -16,12 +16,12 @@
 <body>
 <header id="header">
     <div id="header-img">
-        <img src="img/frontend/cinemaLogo.png" alt="KoalaMan's Store Logo">
+        <img src="img/frontend/cinemaLogo2.png" alt="KoalaMan's Store Logo">
     </div>
     <nav id="nav-bar" class="navbar navbar-expand-lg">
-        <a class="nav-link" href="#home">Trang chủ</a>
-        <a class="nav-link" href="#features">Phim đang chiếu</a>
-        <a class="nav-link" href="#games">Lịch phát </a>
+        <a class="nav-link" href="{{route('homepage')}}">Trang chủ</a>
+        <a class="nav-link" href="{{route('current.movie.index')}}">Phim</a>
+        <a class="nav-link" href="#games">Lịch phát hành</a>
         <a class="nav-link" href="#buy">Buy</a>
         <a class="nav-link" href="{{route('login')}}">Đăng nhập</a>
     </nav>

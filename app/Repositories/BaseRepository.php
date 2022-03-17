@@ -15,7 +15,7 @@ abstract class BaseRepository implements BaseInterface
         $this->table = $this->getTable();
     }
 
-    // public abstract function getModel();
+     public abstract function getModel();
     public abstract function getTable();
 
 
@@ -35,9 +35,5 @@ abstract class BaseRepository implements BaseInterface
         return DB::table($this->table)->where('id',$id)->delete();
     }
 
-    public function getAllByEloquent()
-    {
-        return $this->model::all();
-    }
 
 }

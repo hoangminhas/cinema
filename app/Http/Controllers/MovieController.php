@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Movie;
 use App\Repositories\CategoryRepository;
 use App\Repositories\MovieRepository;
 use Illuminate\Http\Request;
@@ -60,8 +61,9 @@ class MovieController extends Controller
         //
     }
 
-    public function frontendIndex()
+    public function indexCurrentMovies()
     {
-
+        $movies = Movie::all();
+        return view('frontend.movie.index', compact('movies'));
     }
 }

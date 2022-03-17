@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('frontend.movie.home');
 });
 
@@ -48,5 +48,9 @@ Route::prefix('movie')->group(function(){
 
 
 //frontend
-Route::get('current-movie', [MovieController::class, 'frontendIndex'])->name('frontend.movie.index');
+Route::get('/homepage', function () {
+    return view('frontend.movie.home');
+})->name('homepage');
+Route::get('/current-movies', [MovieController::class, 'indexCurrentMovies'])->name('current.movie.index');
+
 

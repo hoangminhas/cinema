@@ -21,14 +21,15 @@ body {
     top: 0;
     background-color: #5ea3b3;
     height: 80px;
+    z-index: 999;
 }
 #header-img {
     margin: auto;
 }
 
 #header-img img {
-    width: 180px;
-    height: 70px;
+    width: 190px;
+    height: 80px;
 }
 #nav-bar {
     flex-basis: 85%;

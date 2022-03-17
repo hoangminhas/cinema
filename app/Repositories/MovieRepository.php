@@ -18,9 +18,12 @@ class MovieRepository extends BaseRepository
      */
     public function getModel()
     {
-        return $this->model;
+        return Movie::class;
     }
 
+    public function getAllByEloquent()
+    {
+    }
     // public function getAll()
     // {
     //     // return DB::table($this->table)

@@ -20,7 +20,7 @@ class CreateMoviesTable extends Migration
             $table->string('summary');
             $table->string('image');
             // $table->unsignedBigInteger('category_id');
-            $table->dateTime('date');
+            $table->date('date');
             // $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });

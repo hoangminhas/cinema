@@ -1,4 +1,5 @@
 @extends('layoutFrontend.master')
+@section('title', 'Phim dang chieu')
 @section('content')
 
     <div class="col-12">
@@ -17,7 +18,7 @@
                                               <span>{{$category->name}}</span>
                                 @endforeach
                             </p>
-                            <a href="#" class="btn btn-primary">Đặt vé</a>
+                            <a href="{{route('orderTicket')}}" class="btn btn-danger">Đặt vé</a>
                         </div>
                     </div>
                 </div><br><br>
@@ -37,7 +38,6 @@
                         <div class="card-body">
                             <h5 class="card-title">{{$movie->name}}</h5>
                             <p class="card-text">{{$movie->summary}}</p>
-{{--                            <a href="#" class="btn btn-primary">Đặt vé</a>--}}
                         </div>
                     </div>
                 </div><br><br>

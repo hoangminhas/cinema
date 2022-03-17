@@ -13,10 +13,9 @@ class MovieService extends BaseService
         $this->movieRepository = $movieRepository;
     }
 
-    public function getCurrentMovie()
+    public function getAllMovie()
     {
-//        $movies = $this->movieRepository->getAllByEloquent();
-
+        return $this->movieRepository->getAllByEloquent();
 
     }
 }

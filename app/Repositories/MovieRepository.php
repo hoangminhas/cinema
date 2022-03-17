@@ -23,6 +23,7 @@ class MovieRepository extends BaseRepository
 
     public function getAllByEloquent()
     {
+        return $this->model::all();
     }
     // public function getAll()
     // {

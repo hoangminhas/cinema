@@ -7,7 +7,7 @@ use App\Repositories\Impl\BaseInterface;
 
 abstract class BaseRepository implements BaseInterface
 {
-    // public $model;
+     public $model;
     public $table;
     public function __construct()
     {

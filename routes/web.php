@@ -51,6 +51,9 @@ Route::prefix('movie')->group(function(){
 Route::get('/homepage', function () {
     return view('frontend.movie.home');
 })->name('homepage');
-Route::get('/current-movies', [MovieController::class, 'indexCurrentMovies'])->name('current.movie.index');
+
+Route::get('/current-movies', [MovieController::class, 'indexMovies'])->name('current.movie.index');
+//dat ve
+Route::get('/buy-ticket', [MovieController::class, 'showFormOrder'])->name('orderTicket');
 
 

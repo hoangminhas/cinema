@@ -64,4 +64,3 @@ Route::get('/current-movies', [MovieController::class, 'indexMovies'])->name('cu
 //dat ve
 Route::get('/buy-ticket', [MovieController::class, 'showFormOrder'])->name('orderTicket');
 
-

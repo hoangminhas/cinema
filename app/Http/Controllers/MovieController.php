@@ -9,8 +9,8 @@ use App\Repositories\MovieRepository;
 use App\Services\MovieService;
 
 use Illuminate\Http\Request;
-use App\Repositories\MovieRepository;
-use App\Repositories\CategoryRepository;
+// use App\Repositories\MovieRepository;
+// use App\Repositories\CategoryRepository;
 
 class MovieController extends Controller
 {

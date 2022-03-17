@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
+
 use App\Repositories\CategoryRepository;
 use App\Repositories\MovieRepository;
 use App\Services\MovieService;
+
 use Illuminate\Http\Request;
+use App\Repositories\MovieRepository;
+use App\Repositories\CategoryRepository;
 
 class MovieController extends Controller
 {
@@ -26,7 +30,7 @@ class MovieController extends Controller
     public function index()
     {
         $movies = $this->movieRepository->getAll();
-        dd($movies);
+        // dd($movies[3]->categories);
         return view('backend.movie.index',compact('movies'));
     }
 
@@ -39,7 +43,8 @@ class MovieController extends Controller
 
     public function store(Request $request)
     {
-        dd($request);
+       $this->movieRepository->store($request);
+       return redirect()->route('movie.index');
     }
 
 
@@ -51,18 +56,23 @@ class MovieController extends Controller
 
     public function edit($id)
     {
+        // $movie = Movie::findOrFail($id);
         $movie = $this->movieRepository->getById($id);
-        dd($movie);
+        $categories = $this->categoryRepository->getAll();
+        // dd($movie);
+        return view('backend.movie.update',compact('movie','categories'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $this->movieRepository->update($request,$id);
+        return redirect()->route('movie.index');
     }
 
     public function destroy($id)
     {
-        //
+        $this->movieRepository->delete($id);
+        return redirect()->route('movie.index');
     }
 
     public function indexMovies()

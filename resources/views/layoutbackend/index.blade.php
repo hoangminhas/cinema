@@ -10,7 +10,7 @@
     <meta name="keywords"
         content="admin template, Chameleon admin template, dashboard template, gradient admin template, responsive admin template, webapp, eCommerce dashboard, analytic dashboard">
     <meta name="author" content="ThemeSelect">
-    <title>Dashboard - Chameleon Admin - Modern Bootstrap 4 WebApp & Dashboard HTML Template + UI Kit</title>
+    <title>@yield('title', 'ADMIN')</title>
     <link rel="apple-touch-icon" href={{ asset('images/ico/apple-icon-120.png') }}>
     <link rel="shortcut icon" type="image/x-icon" href={{ asset('images/ico/favicon.ico') }}>
     <link
@@ -135,15 +135,17 @@
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
                 <li class="nav-item mr-auto"><a class="navbar-brand" href="index.html">
-                        <h3 class="brand-text">Chameleon</h3>
+                        <img width="80px" height="40px" src="{{ asset('image/VLCcinema-removebg-preview.png') }}"
+                            alt="">
+                        <h3 class="brand-text">VLC-CINEMA</h3>
                     </a></li>
                 <li class="nav-item d-md-none"><a class="nav-link close-navbar"><i class="ft-x"></i></a></li>
             </ul>
         </div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class="active"><a href="index.html"><i class="ft-home"></i><span
-                            class="menu-title" data-i18n="">Dashboard</span></a>
+                <li class="active"><a href="{{ route('movie.index') }}"><i class="ft-home"></i><span
+                            class="menu-title" data-i18n="">List Movies</span></a>
                 </li>
                 <li class=" nav-item"><a href="charts.html"><i class="ft-pie-chart"></i><span
                             class="menu-title" data-i18n="">Charts</span></a>
@@ -526,7 +528,7 @@
     <!-- ////////////////////////////////////////////////////////////////////////////-->
 
 
-    <footer class="footer footer-static footer-light navbar-border navbar-shadow">
+    {{-- <footer class="footer footer-static footer-light navbar-border navbar-shadow">
         <div class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2"><span
                 class="float-md-left d-block d-md-inline-block">2018 &copy; Copyright <a
                     class="text-bold-800 grey darken-2" href="https://themeselection.com"
@@ -543,7 +545,7 @@
                         target="_blank"> Purchase</a></li>
             </ul>
         </div>
-    </footer>
+    </footer> --}}
 
     <!-- BEGIN VENDOR JS-->
     <script src={{ asset('vendors/js/vendors.min.js') }} type="text/javascript"></script>
@@ -558,15 +560,6 @@
     <!-- BEGIN PAGE LEVEL JS-->
     <script src={{ asset('js/scripts/pages/dashboard-lite.js') }} type="text/javascript"></script>
     <!-- END PAGE LEVEL JS-->
-    {{-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
-        integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous">
-    </script> --}}
 </body>
 
 </html>

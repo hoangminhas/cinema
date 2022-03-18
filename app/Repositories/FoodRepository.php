@@ -7,6 +7,7 @@ use App\Models\Food;
 class FoodRepository extends BaseRepository
 {
 
+
     public function getTable()
     {
         return 'food';

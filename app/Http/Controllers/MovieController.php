@@ -4,14 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MovieRequest;
 use App\Models\Movie;
-
-use App\Repositories\CategoryRepository;
+;
 use App\Repositories\MovieRepository;
 use App\Services\MovieService;
 
 use Illuminate\Http\Request;
-// use App\Repositories\MovieRepository;
-// use App\Repositories\CategoryRepository;
+
 
 class MovieController extends Controller
 {
@@ -84,8 +82,4 @@ class MovieController extends Controller
         return view('frontend.movie.index', compact('movies'));
     }
 
-    public function showFormOrder()
-    {
-        return view('frontend.movie.create');
-    }
 }

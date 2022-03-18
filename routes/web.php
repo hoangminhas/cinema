@@ -6,6 +6,7 @@ use App\Http\Controllers\GoogleSocialiteController;
 
 use App\Http\Controllers\MovieController;
 
+use App\Http\Controllers\SeatController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/home', function () {
     return view('frontend.movie.home');
+});
 
 Route::get('/', function () {
     return view('layoutbackend.index');
@@ -61,6 +63,9 @@ Route::get('/homepage', function () {
 })->name('homepage');
 
 Route::get('/current-movies', [MovieController::class, 'indexMovies'])->name('current.movie.index');
+
 //dat ve
-Route::get('/buy-ticket', [MovieController::class, 'showFormOrder'])->name('orderTicket');
+Route::get('/buy-ticket', [SeatController::class, 'showFormOrder'])->name('showFormOrder');
+Route::post('/buy-ticket', [SeatController::class, 'orderTicket'])->name('orderTicket');
+
 

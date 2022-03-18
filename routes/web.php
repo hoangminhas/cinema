@@ -1,13 +1,10 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-<<<<<<< HEAD
 use App\Http\Controllers\FoodController;
-=======
 
 use App\Http\Controllers\GoogleSocialiteController;
 
->>>>>>> 18f33d6969e5229d0ea7451643ef4aa8658f85fd
 use App\Http\Controllers\MovieController;
 
 use App\Http\Controllers\SeatController;
@@ -31,12 +28,8 @@ Route::get('/home', function () {
 
 Route::get('/', function () {
     return view('layoutbackend.index');
-<<<<<<< HEAD
 })->name('home');
-=======
 
-});
->>>>>>> 18f33d6969e5229d0ea7451643ef4aa8658f85fd
 
 ////login
 Route::get('/login', [AuthController::class, 'showFormLogin'])->name('showFormLogin');
@@ -46,9 +39,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/register', [AuthController::class, 'showFormRegister'])->name('showFormRegister');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 
-<<<<<<< HEAD
 //movies
-=======
 
 //logout
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
@@ -58,7 +49,6 @@ Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']
 Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);
 
 
->>>>>>> 18f33d6969e5229d0ea7451643ef4aa8658f85fd
 Route::prefix('movie')->group(function(){
    Route::get('index',[MovieController::class,'index'])->name('movie.index');
    Route::get('create',[MovieController::class,'create'])->name('movie.create');

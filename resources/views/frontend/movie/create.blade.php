@@ -2,6 +2,12 @@
 @section('title', 'Order')
 @section('head')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .check-with-label:checked + .label-for-check {
+            background-color: hotpink;
+        }
+    </style>
 @endsection
 @section('content')
 
@@ -11,20 +17,30 @@
                 <form action="" method="post">
                     <h2 style="color: red">Order Ticket</h2>
                     <label>Chọn ngày:
-                        <input type="date" name="date">
+                        <input type="datetime-local" name="date">
                     </label><br><br>
                     <label>Chọn ghế:
-                        <select name="name" id="select">
-                            <option value="#" disabled selected>--Available--</option>
-                            @foreach($seats as $seat)
-                                @if($seat->status == "null")
-                                    <option class="seat" price="{{$seat->seattype->price}}"
-                                            seatType="{{$seat->seatType->name}}"
-                                            value="{{$seat->name}}">{{$seat->name}}</option>
-                                @endif
-                            @endforeach
-                        </select>
+{{--                        <select name="name" id="select">--}}
+{{--                            <option value="#" disabled selected>--Available--</option>--}}
+{{--                            @foreach($seats as $seat)--}}
+{{--                                @if($seat->status == "null")--}}
+{{--                                    <option class="seat" price="{{$seat->seattype->price}}"--}}
+{{--                                            seatType="{{$seat->seatType->name}}"--}}
+{{--                                            value="{{$seat->name}}">{{$seat->name}}</option>--}}
+{{--                                @endif--}}
+{{--                            @endforeach--}}
+{{--                        </select>--}}
                     </label><br><br>
+
+                    <div style="width: 35%">
+                        @foreach($seats as $key => $seat)
+                            <input style="display: none" class="check-with-label" id="{{$key}}" type="checkbox" name="name" value="{{$seat->name}}">
+                            <label class="label-for-check" for="{{$key}}" style="color: white; border: 2px solid orange">
+                                {{$seat->name}}
+                            </label>
+                        @endforeach
+                    </div>
+
                     <p>Giá: <span id="price-span"></span></p>
                     <p>Loại: <span id="seatType-span"></span></p>
                     <span>Đồ ăn:
@@ -112,10 +128,18 @@
             });
 
 
-            //
-            // $("#yes").on('click', function () {
-            //    $("#foods").show();
+            // $(".pick-seat").on('click', function () {
+            //    $(this).attr('style','background-color:red');
+            // });
+
+            //checkbox
+            // $('input[type="checkbox"]').mousedown(function() {
+            //     if (!$(this).is(':checked')) {
+            //         this.checked = confirm("Are you sure?");
+            //         $(this).trigger("change");
+            //     }
             // });
         });
     </script>
+
 @endsection

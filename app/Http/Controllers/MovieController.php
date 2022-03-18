@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MovieRequest;
 use App\Models\Movie;
-
-use App\Repositories\CategoryRepository;
+;
 use App\Repositories\MovieRepository;
 use App\Services\MovieService;
 
@@ -40,7 +40,7 @@ class MovieController extends Controller
         return view('backend.movie.create' , compact('categories'));
     }
 
-    public function store(Request $request)
+    public function store(MovieRequest $request)
     {
        $this->movieRepository->store($request);
        return redirect()->route('movie.index');
@@ -49,7 +49,9 @@ class MovieController extends Controller
 
     public function show($id)
     {
-        //
+        $movies = $this->movieRepository->showFim($id);
+        // dd($movies);
+        return view('backend.movie.list',compact('movies'));
     }
 
 
@@ -62,7 +64,7 @@ class MovieController extends Controller
         return view('backend.movie.update',compact('movie','categories'));
     }
 
-    public function update(Request $request, $id)
+    public function update(MovieRequest $request, $id)
     {
         $this->movieRepository->update($request,$id);
         return redirect()->route('movie.index');

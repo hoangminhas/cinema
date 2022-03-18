@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Category;
 use App\Models\Movie;
 use Illuminate\Support\Facades\DB;
 
@@ -84,14 +85,28 @@ class MovieRepository extends BaseRepository
         $movie->name = $request->name;
         $movie->duration = $request->duration;
         $movie->summary = $request->summary;
-        $movie->date = $request->date;
+        $movie->date = $request->date ?? $movie->date;
         $movie->image = $path ?? $movie->image;
         $movie->save();
 
         $movie->categories()->sync($request->category);
     }
+
     public function delete($id)
     {
+        DB::table('category_movie')->where('movie_id', $id)->delete();
+        DB::table($this->table)->where('id', $id)->delete();
+    }
+
+    public function showFim($id)
+    {
+        return DB::table($this->table)
+        ->join('category_movie','category_movie.movie_id','=','movies.id')
+        ->join('categories','categories.id','=','category_movie.category_id')
+        ->where('categories.id',$id)
+        ->select('movies.*','categories.name as category','categories.color as color')->orderBy('movies.id','DESC')->get();
+
+        // return Category::findOrFail($id);
     }
 
 }

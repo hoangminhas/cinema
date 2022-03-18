@@ -57,7 +57,7 @@
                                 href="#"><i class="ft-menu"></i></a></li>
                         <li class="nav-item d-none d-md-block"><a class="nav-link nav-link-expand" href="#"><i
                                     class="ficon ft-maximize"></i></a></li>
-                        <li class="nav-item dropdown navbar-search"><a class="nav-link dropdown-toggle hide"
+                        {{-- <li class="nav-item dropdown navbar-search"><a class="nav-link dropdown-toggle hide"
                                 data-toggle="dropdown" href="#"><i class="ficon ft-search"></i></a>
                             <ul class="dropdown-menu">
                                 <li class="arrow_box">
@@ -74,7 +74,7 @@
                                     </form>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
                     </ul>
                     <ul class="nav navbar-nav float-right">
                         {{-- <li class="dropdown dropdown-language nav-item"><a class="dropdown-toggle nav-link"
@@ -134,7 +134,7 @@
         data-img="theme-assets/images/backgrounds/02.jpg">
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
-                <li class="nav-item mr-auto"><a class="navbar-brand" href="index.html">
+                <li class="nav-item mr-auto"><a class="navbar-brand" href="{{ route('home') }}">
                         <img width="80px" height="40px" src="{{ asset('image/VLCcinema-removebg-preview.png') }}"
                             alt="">
                         <h3 class="brand-text">VLC-CINEMA</h3>
@@ -144,14 +144,14 @@
         </div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class="active"><a href="{{ route('movie.index') }}"><i class="ft-home"></i><span
-                            class="menu-title" data-i18n="">List Movies</span></a>
+                <li id="1" class=""><a href="{{ route('movie.index') }}"><i
+                            class="ft-film"></i><span class="menu-title" data-i18n="">List Movies</span></a>
                 </li>
-                <li class=" nav-item"><a href="charts.html"><i class="ft-pie-chart"></i><span
+                {{-- <li class=" nav-item"><a href="charts.html"><i class="ft-pie-chart"></i><span
                             class="menu-title" data-i18n="">Charts</span></a>
-                </li>
-                <li class=" nav-item"><a href="icons.html"><i class="ft-droplet"></i><span
-                            class="menu-title" data-i18n="">Icons</span></a>
+                </li> --}}
+                <li id="2" class=" nav-item"><a href="{{ route('food.index') }}"><i
+                            class="ft-shopping-cart"></i><span class="menu-title" data-i18n="">Foods</span></a>
                 </li>
                 <li class=" nav-item"><a href="cards.html"><i class="ft-layers"></i><span
                             class="menu-title" data-i18n="">Cards</span></a>
@@ -546,6 +546,7 @@
             </ul>
         </div>
     </footer> --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- BEGIN VENDOR JS-->
     <script src={{ asset('vendors/js/vendors.min.js') }} type="text/javascript"></script>
@@ -560,6 +561,14 @@
     <!-- BEGIN PAGE LEVEL JS-->
     <script src={{ asset('js/scripts/pages/dashboard-lite.js') }} type="text/javascript"></script>
     <!-- END PAGE LEVEL JS-->
+
+    {{-- <script>
+        $(document).ready(function(){
+            $(this).on('click', function(){
+               $(this).attr('style', 'background-color: #ff0')
+            })
+        })
+    </script> --}}
 </body>
 
 </html>

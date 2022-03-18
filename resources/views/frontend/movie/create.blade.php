@@ -96,7 +96,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Understood</button>
+                                    <button type="button" class="btn btn-primary">Understood</button>
                                 </div>
                             </div>
                         </div>
@@ -106,9 +106,7 @@
             </div>
             <div class="col-2"></div>
         </div>
-
     </div>
-
 
     <script>
         $(document).ready(function () {
@@ -119,11 +117,7 @@
                     totalPrice += parseInt($(this).attr('data-price'));
                 });
                 $("#price-span").html(totalPrice.toLocaleString("it-IT", {style:"currency", currency:"VND"}));
-
-            })
-           if ($("input[type='checkbox']").is(':checked')) {
-
-           }
+            });
 
             $("#foods").hide();
 
@@ -136,10 +130,8 @@
                }
             });
 
+            $("#seat-type")
 
-            // $(".pick-seat").on('click', function () {
-            //    $(this).attr('style','background-color:red');
-            // });
 
             //checkbox
             // $('input[type="checkbox"]').mousedown(function() {

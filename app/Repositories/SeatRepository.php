@@ -18,5 +18,10 @@ class SeatRepository extends BaseRepository
         // TODO: Implement getTable() method.
     }
 
+    public function getSeats($seatIds)
+    {
+        return $this->model::whereIn('name',$seatIds)->get();
+    }
+
 
 }

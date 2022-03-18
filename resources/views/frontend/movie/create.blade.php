@@ -14,12 +14,19 @@
     <div class="col-12" style="margin-bottom: 150px">
         <div class="row">
             <div style="margin-left: 30%" class="col-8">
-                <form action="" method="post">
+                <form action="{{route('orderTicket')}}" method="post">
+                    @csrf
                     <h2 style="color: red">Order Ticket</h2>
                     <label>Chọn ngày:
                         <input type="datetime-local" name="date">
                     </label><br><br>
-                    <label>Chọn ghế:
+                    <select name="name" id="seat-type">
+                        <option value="#" disabled selected>--Chon Loai Ghe--</option>
+                            @foreach(\App\Models\SeatType::all() as $seattypes)
+                            <option value="{{$seattypes->name}}">{{$seattypes->name}}</option>
+                            @endforeach
+                    </select><br><br>
+                    <p>Chọn ghế:
 {{--                        <select name="name" id="select">--}}
 {{--                            <option value="#" disabled selected>--Available--</option>--}}
 {{--                            @foreach($seats as $seat)--}}
@@ -30,19 +37,19 @@
 {{--                                @endif--}}
 {{--                            @endforeach--}}
 {{--                        </select>--}}
-                    </label><br><br>
+                    </p>
 
                     <div style="width: 35%">
                         @foreach($seats as $key => $seat)
-                            <input style="display: none" class="check-with-label" id="{{$key}}" type="checkbox" name="name" value="{{$seat->name}}">
-                            <label class="label-for-check" for="{{$key}}" style="color: white; border: 2px solid orange">
+                            <input style="display: none" class="check-with-label seat" id="{{$key}}" type="checkbox"
+                                   name="seats[]" value="{{$seat->name}}" data-price="{{$seat->seattype->price}}">
+                            <label class="label-for-check" for="{{$key}}" style="color: dimgray; border: 2px solid orange">
                                 {{$seat->name}}
                             </label>
                         @endforeach
                     </div>
 
                     <p>Giá: <span id="price-span"></span></p>
-                    <p>Loại: <span id="seatType-span"></span></p>
                     <span>Đồ ăn:
                         <input id="yes" type="radio" name="f&d" value="yes">
                         <label for="yes">Yes</label>
@@ -64,7 +71,6 @@
                                     </div>
                                 </div>
                             @endforeach
-
                         </div>
                     </div>
                     <br>
@@ -90,7 +96,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Understood</button>
+                                    <button type="submit" class="btn btn-primary">Understood</button>
                                 </div>
                             </div>
                         </div>
@@ -107,14 +113,17 @@
     <script>
         $(document).ready(function () {
 
-            $("select").on('change', function () {
-                //in ra gia
-                var price = $('option:selected', this).attr('price');
-                $("#price-span").html(price + ' vnd');
-                //in ra loai ghe
-                var seatType = $('option:selected', this).attr('seatType');
-                $("#seatType-span").html(seatType);
-            });
+            $('.seat').on('change',function () {
+                let totalPrice = 0;
+                $('.seat:checkbox:checked').each(function () {
+                    totalPrice += parseInt($(this).attr('data-price'));
+                });
+                $("#price-span").html(totalPrice.toLocaleString("it-IT", {style:"currency", currency:"VND"}));
+
+            })
+           if ($("input[type='checkbox']").is(':checked')) {
+
+           }
 
             $("#foods").hide();
 

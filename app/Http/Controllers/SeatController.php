@@ -25,8 +25,16 @@ class SeatController extends Controller
         return view('frontend.movie.create', compact('seats', 'foods'));
     }
 
-    public function orderTicket()
+    public function orderTicket(Request $request)
     {
+        $orderSeats = $this->getSeats($request->seats);
+        dd($orderSeats);
+    }
 
+    public function getSeats($seatIds)
+    {
+        $seats = $this->seatService->getSeats($seatIds);
+//        dd($seats);
+        return response()->json($seats)->getData();
     }
 }

@@ -1,8 +1,15 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+<<<<<<< HEAD
 use App\Http\Controllers\FoodController;
+=======
+
+use App\Http\Controllers\GoogleSocialiteController;
+
+>>>>>>> 18f33d6969e5229d0ea7451643ef4aa8658f85fd
 use App\Http\Controllers\MovieController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,19 +23,40 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/home', function () {
+    return view('frontend.movie.home');
+
 Route::get('/', function () {
     return view('layoutbackend.index');
+<<<<<<< HEAD
 })->name('home');
+=======
 
-//login
+});
+>>>>>>> 18f33d6969e5229d0ea7451643ef4aa8658f85fd
+
+////login
 Route::get('/login', [AuthController::class, 'showFormLogin'])->name('showFormLogin');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
-//register
+////register
 Route::get('/register', [AuthController::class, 'showFormRegister'])->name('showFormRegister');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 
+<<<<<<< HEAD
 //movies
+=======
+
+//logout
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
+//login google
+Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle'])->name('google.auth');
+Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);
+
+
+>>>>>>> 18f33d6969e5229d0ea7451643ef4aa8658f85fd
 Route::prefix('movie')->group(function(){
    Route::get('index',[MovieController::class,'index'])->name('movie.index');
    Route::get('create',[MovieController::class,'create'])->name('movie.create');
@@ -50,3 +78,15 @@ Route::prefix('food')->group(function(){
    Route::get('edit/{id}',[FoodController::class,'edit'])->name('food.edit');
    Route::post('edit/{id}',[FoodController::class,'update'])->name('food.update');
 });
+
+
+//frontend
+Route::get('/homepage', function () {
+    return view('frontend.movie.home');
+})->name('homepage');
+
+Route::get('/current-movies', [MovieController::class, 'indexMovies'])->name('current.movie.index');
+//dat ve
+Route::get('/buy-ticket', [MovieController::class, 'showFormOrder'])->name('orderTicket');
+
+

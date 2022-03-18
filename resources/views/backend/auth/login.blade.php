@@ -6,14 +6,33 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="css/auth/login/style.css">
+
 </head>
 <body>
-<h2>Login</h2>
-<form action="{{route('login')}}" method="post">
-    @csrf
-    <input type="email" name="email" placeholder="email"><br>
-    <input type="password" name="password" placeholder="password"><br>
-    <button>Login</button>
-</form>
+
+<div class="login">
+    <h1>Login</h1>
+    <form action="{{route('login')}}" method="post">
+        @csrf
+        <input type="email" name="email" placeholder="Email" required="required" />
+        <p style="color: red">{{$errors->has('email') ? $errors->first('email') : ''}}</p>
+        <input type="password" name="password" placeholder="Password" required="required" />
+        <p style="color: red">{{$errors->has('password') ? $errors->first('password') : ''}}</p>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
+        <button type="button" class="btn btn-primary btn-block btn-large"><a style="color: white; text-decoration: none" href="{{route('showFormRegister')}}">Sign Up</a></button>
+        <button type="button" class="btn btn-primary btn-block btn-large"><a style="color: white; text-decoration: none" href="{{route('google.auth')}}">Login with Google</a></button>
+    </form>
+</div>
+
+{{--<h2>Login</h2>--}}
+{{--<form action="{{route('login')}}" method="post">--}}
+{{--    @csrf--}}
+{{--    <input type="email" name="email" value="{{old('email')}}" placeholder="email"><br>--}}
+{{--    <p style="color: red">{{$errors->has('email') ? $errors->first('email') : ''}}</p>--}}
+{{--    <input type="password" name="password" placeholder="password"><br>--}}
+{{--    <p style="color: red">{{$errors->has('password') ? $errors->first('password') : ''}}</p>--}}
+{{--    <button>Login</button>--}}
+{{--</form>--}}
 </body>
 </html>

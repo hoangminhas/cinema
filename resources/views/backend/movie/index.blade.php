@@ -1,5 +1,5 @@
 @extends('layoutbackend.index')
-@section('title', 'LIST MOVIE')
+@section('title', 'List Movie')
 {{-- <td>
     <span class="dropdown">
         <button id="btnSearchDrop14" type="button" class="btn btn-sm btn-icon btn-pure font-medium-2" data-toggle="dropdown" aria-haspopup="true"
@@ -26,10 +26,28 @@
     <div class="container mt-4">
         <div class="row mb-3">
             <div class="col-3">
-                <h2 style="text-align: center">LISTMOVIE</h2>
+                <h2 style="text-align: center">List Movie</h2>
             </div>
-            <div class="col-9" style="text-align: right"><a href="{{ route('movie.store') }}"
-                    class="btn btn-md btn-info box-shadow-2 round btn-min-width pull-right">CREATEMOVIE</a></div>
+            <div class="col-6"></div>
+            {{-- <div class="nav-item dropdown navbar-search col-1"><a class="nav-link dropdown-toggle hide" data-toggle="dropdown"
+                    href="#"><i class="ficon ft-search"></i></a>
+                <div class="dropdown-menu">
+                    <li class="arrow_box">
+                        <form method="GET" action="{{route('search')}}">
+                            <div class="input-group search-box">
+                                <div class="position-relative has-icon-right full-width">
+                                    <input class="form-control" name="search" id="search" type="text" placeholder="Search here...">
+                                    <div class="form-control-position navbar-search-close"><i
+                                        class="ft-x">
+                                    </i></div>
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                </div>
+            </div> --}}
+            <div class="col-2" style="text-align: right"><a href="{{ route('movie.store') }}"
+                    class="btn btn-md btn-info box-shadow-2 round btn-min-width pull-right">Create Movie</a></div>
         </div>
         <table
             class="table table-white-space table-bordered table-striped row-grouping display no-wrap icheck table-middle dataTable no-footer">
@@ -50,13 +68,15 @@
                         <td>{{ $movie->name }}</td>
                         <td>
                             @foreach ($movie->categories as $category)
-                                <p class="btn btn-sm btn-outline-{{ $category->color }} round">{{ $category->name }}</p>
+                                <p  class="btn btn-sm btn-outline-{{ $category->color }} round"><a
+                                        href="{{ route('movie.list', $category->id) }}">{{ $category->name }}</a> </p>
                             @endforeach
                         </td>
                         <td>
                             <span class="dropdown">
-                                <button id="btnSearchDrop14" type="button" class="btn btn-sm btn-icon btn-pure font-medium-2"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button id="btnSearchDrop14" type="button"
+                                    class="btn btn-sm btn-icon btn-pure font-medium-2" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
                                     <i class="ft-more-vertical"></i>
                                 </button>
                                 <span aria-labelledby="btnSearchDrop14" class="dropdown-menu mt-1 dropdown-menu-right">

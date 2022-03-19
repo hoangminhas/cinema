@@ -19,9 +19,9 @@
         <p style="color: red">{{$errors->has('email') ? $errors->first('email') : ''}}</p>
         <input type="password" name="password" placeholder="Password" required="required" />
         <p style="color: red">{{$errors->has('password') ? $errors->first('password') : ''}}</p>
-        <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
-        <button type="button" class="btn btn-primary btn-block btn-large"><a style="color: white; text-decoration: none" href="{{route('showFormRegister')}}">Sign Up</a></button>
-        <button type="button" class="btn btn-primary btn-block btn-large"><a style="color: white; text-decoration: none" href="{{route('google.auth')}}">Login with Google</a></button>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button> <br>
+        <button type="button" class="btn btn-primary btn-block btn-large"><a style="color: white; text-decoration: none" href="{{route('showFormRegister')}}">Sign Up</a></button><br>
+        <button type="button" class="btn btn-primary btn-block btn-large"><a style="color: white; text-decoration: none" href="{{url('auth/redirect/google')}}">Login with Google</a></button>
     </form>
 </div>
 

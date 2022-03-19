@@ -66,7 +66,8 @@ class MovieRepository extends BaseRepository
         $movie->name = $request->name;
         $movie->duration = $request->duration;
         $movie->summary = $request->summary;
-        $movie->date = $request->date;
+        $movie->date_start = $request->date_start;
+        $movie->date_end = $request->date_end;
         $movie->image = $path;
         $movie->save();
 
@@ -85,7 +86,8 @@ class MovieRepository extends BaseRepository
         $movie->name = $request->name;
         $movie->duration = $request->duration;
         $movie->summary = $request->summary;
-        $movie->date = $request->date ?? $movie->date;
+        $movie->date_start = $request->date_start ?? $movie->date_start;
+        $movie->date_end = $request->date_end ?? $movie->date_end;
         $movie->image = $path ?? $movie->image;
         $movie->save();
 

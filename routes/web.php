@@ -25,6 +25,7 @@ use Laravel\Ui\AuthCommand;
 
 Route::get('/', function () {
     return view('layoutbackend.index');
+});
 Route::get('/home', function () {
     return view('frontend.movie.home');
 })->name('user');

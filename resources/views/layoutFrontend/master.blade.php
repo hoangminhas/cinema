@@ -41,7 +41,7 @@
             <a class="nav-link mr-2" href="{{ route('homepage') }}">Trang chủ</a>
             <a class="nav-link mr-2" href="{{ route('current.movie.index') }}">Phim</a>
             <a class="nav-link ml-2" href="#games">Lịch phát hành</a>
-            <a class="nav-link mr-2" href="#buy">Buy</a>
+{{--            <a class="nav-link mr-2" href="#buy">Buy</a>--}}
             <div class="nav-item dropdown navbar-search col-1"><a class="nav-link dropdown-toggle hide"
                     data-toggle="dropdown" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                         fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">

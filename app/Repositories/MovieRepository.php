@@ -4,7 +4,9 @@ namespace App\Repositories;
 
 use App\Models\Category;
 use App\Models\Movie;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Event;
 
 class MovieRepository extends BaseRepository
 {

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\MovieRepository;
+use Carbon\Carbon;
 
 class MovieService extends BaseService
 {
@@ -13,13 +14,28 @@ class MovieService extends BaseService
         $this->movieRepository = $movieRepository;
     }
 
-    public function getAllMovie()
+    public function getAllMovies(): array
     {
-        return $this->movieRepository->getAllByEloquent();
+        $today = Carbon::today('Asia/Ho_Chi_Minh')->format('Y-m-d');
+        $today = date('Y-m-d', strtotime($today));
+        $currentMovies=[];
+        $upCummingMovies=[];
+        $movies = $this->movieRepository->getAllByEloquent();
+        foreach ($movies as $movie) {
+            $dateStart = date('Y-m-d', strtotime($movie->date_start));
+            $dateEnd = date('Y-m-d', strtotime($movie->date_end));
+            if ($dateStart <= $today && $today <= $dateEnd) {
+                $currentMovies[] = $movie;
+            } if ($dateStart > $today) {
+                $upCummingMovies[] = $movie;
+            }
+        }
+        return [$currentMovies, $upCummingMovies];
     }
 
     public function getMovieById($id)
     {
         return $this->movieRepository->getById($id);
     }
+
 }

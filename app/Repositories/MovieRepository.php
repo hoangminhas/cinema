@@ -94,6 +94,7 @@ class MovieRepository extends BaseRepository
 
     public function delete($id)
     {
+        DB::table('orders')->where('movie_id',$id)->delete();
         DB::table('category_movie')->where('movie_id', $id)->delete();
         DB::table($this->table)->where('id', $id)->delete();
     }
@@ -101,12 +102,19 @@ class MovieRepository extends BaseRepository
     public function showFim($id)
     {
         return DB::table($this->table)
-        ->join('category_movie','category_movie.movie_id','=','movies.id')
-        ->join('categories','categories.id','=','category_movie.category_id')
-        ->where('categories.id',$id)
-        ->select('movies.*','categories.name as category','categories.color as color')->orderBy('movies.id','DESC')->get();
+            ->join('category_movie', 'category_movie.movie_id', '=', 'movies.id')
+            ->join('categories', 'categories.id', '=', 'category_movie.category_id')
+            ->where('categories.id', $id)
+            ->select('movies.*', 'categories.name as category', 'categories.color as color')->orderBy('movies.id', 'DESC')->get();
 
         // return Category::findOrFail($id);
     }
 
+    public function search($request)
+    {
+        $search = $request->input('search');
+        return Movie::query()
+            ->where('movies.name', 'LIKE', "%{$search}%")
+            ->get();
+    }
 }

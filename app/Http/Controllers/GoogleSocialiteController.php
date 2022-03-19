@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
 class GoogleSocialiteController extends Controller
 {
-    //
     public function redirectToGoogle()
     {
         return Socialite::driver('google')->redirect();

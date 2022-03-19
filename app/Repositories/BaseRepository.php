@@ -21,7 +21,7 @@ abstract class BaseRepository implements BaseInterface
 
     public function getAll()
     {
-        return DB::table($this->table)->get();
+        return DB::table($this->table)->orderByDesc('id')->get();
     }
 
 

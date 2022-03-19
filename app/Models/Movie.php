@@ -14,9 +14,5 @@ class Movie extends Model
     {
         return $this->belongsToMany(Category::class);
 
-    public function categories()
-    {
-    return $this->belongsToMany(Category::class);
-
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Food;
+use Illuminate\Support\Facades\DB;
 
 class FoodRepository extends BaseRepository
 {
@@ -10,6 +11,10 @@ class FoodRepository extends BaseRepository
     public function getTable()
     {
         return 'food';
+    }
+    public function getModel()
+    {
+        return Food::class;
     }
 
     public function store($request)
@@ -39,5 +44,11 @@ class FoodRepository extends BaseRepository
         $food->price = $request->price;
         $food->image = $path ?? $food->image;
         $food->save();
+    }
+
+    public function deleteById($id)
+    {
+        DB::table('orders')->where('food_id',$id)->delete();
+        DB::table($this->table)->where('id',$id)->delete();
     }
 }

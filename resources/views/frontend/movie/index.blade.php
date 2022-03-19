@@ -53,5 +53,9 @@
             @endforeach
         </div>
     </div>
-
+<script>
+    @if(\Illuminate\Support\Facades\Session::has('msg'))
+        alert("{{\Illuminate\Support\Facades\Session::get('msg')}}")
+    @endif
+</script>
 @endsection

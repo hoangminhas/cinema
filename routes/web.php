@@ -91,7 +91,10 @@ Route::get('/current-movies', [MovieController::class, 'indexMovies'])->name('cu
 Route::get('/movie/{id}/detail', [MovieController::class, 'showMovieById'])->name('current.movie.show');
 
 //dat ve
-Route::get('/buy-ticket/{id}', [SeatController::class, 'showFormOrder'])->name('showFormOrder');
-Route::post('/buy-ticket', [SeatController::class, 'orderTicket'])->name('orderTicket');
+Route::middleware('checkMakeOrder')->group(function () {
+    Route::get('/buy-ticket/{id}', [SeatController::class, 'showFormOrder'])->name('showFormOrder');
+    Route::post('/buy-ticket', [SeatController::class, 'orderTicket'])->name('orderTicket');
+});
+
 
 

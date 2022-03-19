@@ -55,6 +55,7 @@
         <img src="{{asset("img/frontend/signal/signal2.png")}}" alt="sign2">
         <img src="{{asset("img/frontend/signal/signal3.png")}}" alt="sign3">
         <a class="btn btn-danger" href="{{route('showFormOrder', $movie->id)}}">Đặt vé</a>
+        <a class="btn" style="background-color: #8899a6" href="{{route('current.movie.index')}}">Quay lại</a>
     </div>
 </div>
 @endsection

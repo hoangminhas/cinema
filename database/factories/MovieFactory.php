@@ -21,11 +21,12 @@ class MovieFactory extends Factory
             'duration'=> $this->faker->phoneNumber(),
             'summary'=> $this->faker->text(),
             'image' => $this->faker->text(),
-            'date' => $this->faker->dateTime(),
+            'date_start' => $this->faker->date(),
+            'date_end' => $this->faker->date()
             // 'category_id'=> Category::all()->random()->id,
 
         ];
     }
 
-    
+
 }

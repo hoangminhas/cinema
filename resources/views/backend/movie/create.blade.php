@@ -27,9 +27,14 @@
                 <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">DATE</label> <br>
+                <label for="exampleInputPassword1">date_start</label> <br>
                 <input type="date" value="" required value="{{ old('date') }}"
-                    oninvalid="this.setCustomValidity('Vui Long Nhap')" oninput="this.setCustomValidity('')" name="date">
+                    oninvalid="this.setCustomValidity('Vui Long Nhap')" oninput="this.setCustomValidity('')" name="date_start">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Date_end</label> <br>
+                <input type="date" value="" required value="{{ old('date') }}"
+                    oninvalid="this.setCustomValidity('Vui Long Nhap')" oninput="this.setCustomValidity('')" name="date_end">
             </div>
             <div>
                 @foreach ($categories as $category)
@@ -48,8 +53,6 @@
                 <div class="col-2"></div>
                 <div class="col-2"></div>
             </div>
-
-
 
         </form>
     </div>

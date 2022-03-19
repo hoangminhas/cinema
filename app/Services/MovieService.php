@@ -16,6 +16,10 @@ class MovieService extends BaseService
     public function getAllMovie()
     {
         return $this->movieRepository->getAllByEloquent();
+    }
 
+    public function getMovieById($id)
+    {
+        return $this->movieRepository->getById($id);
     }
 }

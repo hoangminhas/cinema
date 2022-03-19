@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\FoodService;
+use App\Services\MovieService;
 use App\Services\SeatService;
 use Illuminate\Http\Request;
 
@@ -11,18 +12,22 @@ class SeatController extends Controller
     //
     public $seatService;
     public $foodService;
+    public $movieService;
     public function __construct(SeatService $seatService,
-                                FoodService $foodService)
+                                FoodService $foodService,
+                                MovieService $movieService)
     {
         $this->seatService = $seatService;
         $this->foodService = $foodService;
+        $this->movieService = $movieService;
     }
 
-    public function showFormOrder()
+    public function showFormOrder($id)
     {
+        $movie = $this->movieService->getMovieById($id);
         $seats = $this->seatService->getAllSeats();
         $foods = $this->foodService->getAllFood();
-        return view('frontend.movie.create', compact('seats', 'foods'));
+        return view('frontend.movie.create', compact(['seats', 'foods','movie']));
     }
 
     public function orderTicket(Request $request)

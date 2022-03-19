@@ -1,10 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+
 use App\Http\Controllers\FoodController;
-
 use App\Http\Controllers\GoogleSocialiteController;
-
 use App\Http\Controllers\MovieController;
 
 use App\Http\Controllers\SeatController;
@@ -41,7 +40,6 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/register', [AuthController::class, 'showFormRegister'])->name('showFormRegister');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 
-//movies
 //infor
 Route::get('infor', [MovieController::class, 'infor'])->name('infor');
 
@@ -50,6 +48,7 @@ Route::get('password', [AuthController::class, 'password'])->name('password');
 Route::post('password', [AuthController::class, 'changePassword'])->middleware('CheckPassword');
 
 //logout
+
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 //login google
@@ -80,17 +79,19 @@ Route::middleware('CheckAuth')->group(function () {
     });
 });
 
-
 //frontend
 Route::get('/homepage', function () {
     return view('frontend.movie.home');
 })->name('homepage');
+
+
+
 Route::get('/search/', [MovieController::class, 'searchUser'])->name('searchuser');
 Route::get('/current-movies', [MovieController::class, 'indexMovies'])->name('current.movie.index');
+Route::get('/movie/{id}/detail', [MovieController::class, 'showMovieById'])->name('current.movie.show');
 
 //dat ve
-Route::get('/buy-ticket', [SeatController::class, 'showFormOrder'])->name('showFormOrder');
+Route::get('/buy-ticket/{id}', [SeatController::class, 'showFormOrder'])->name('showFormOrder');
 Route::post('/buy-ticket', [SeatController::class, 'orderTicket'])->name('orderTicket');
-
 
 

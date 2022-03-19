@@ -6,11 +6,15 @@ use Spatie\Searchable\Search;
 use toastr;
 use App\Models\Movie;
 use Illuminate\Http\Request;
+
 use App\Services\MovieService;
 use App\Http\Requests\MovieRequest;
 
 use App\Repositories\MovieRepository;
 use App\Repositories\CategoryRepository;
+
+
+
 
 class MovieController extends Controller
 {
@@ -81,6 +85,7 @@ class MovieController extends Controller
         return view('frontend.movie.index', compact('movies'));
     }
 
+
     public function showFormOrder()
     {
         return view('frontend.movie.create');
@@ -96,4 +101,5 @@ class MovieController extends Controller
         $movies = $this->movieRepository->search($request);
         return view('backend.movie.index', compact('movies'));
     }
+
 }

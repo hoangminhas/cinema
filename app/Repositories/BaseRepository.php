@@ -35,5 +35,8 @@ abstract class BaseRepository implements BaseInterface
         return DB::table($this->table)->where('id',$id)->delete();
     }
 
-
+    public function getAllByEloquent()
+    {
+        return $this->model::all();
+    }
 }

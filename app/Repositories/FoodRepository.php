@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 class FoodRepository extends BaseRepository
 {
 
+
     public function getTable()
     {
         return 'food';

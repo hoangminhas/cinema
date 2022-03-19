@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Services\FoodService;
+use App\Services\SeatService;
+use Illuminate\Http\Request;
+
+class SeatController extends Controller
+{
+    //
+    public $seatService;
+    public $foodService;
+    public function __construct(SeatService $seatService,
+                                FoodService $foodService)
+    {
+        $this->seatService = $seatService;
+        $this->foodService = $foodService;
+    }
+
+    public function showFormOrder()
+    {
+        $seats = $this->seatService->getAllSeats();
+        $foods = $this->foodService->getAllFood();
+        return view('frontend.movie.create', compact('seats', 'foods'));
+    }
+
+    public function orderTicket(Request $request)
+    {
+        $orderSeats = $this->getSeats($request->seats);
+        dd($orderSeats);
+    }
+
+    public function getSeats($seatIds)
+    {
+        $seats = $this->seatService->getSeats($seatIds);
+//        dd($seats);
+        return response()->json($seats)->getData();
+    }
+}

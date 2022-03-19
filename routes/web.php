@@ -23,6 +23,8 @@ use Laravel\Ui\AuthCommand;
 */
 
 
+Route::get('/', function () {
+    return view('layoutbackend.index');
 Route::get('/home', function () {
     return view('frontend.movie.home');
 })->name('user');
@@ -84,10 +86,17 @@ Route::middleware('CheckAuth')->group(function () {
 Route::get('/homepage', function () {
     return view('frontend.movie.home');
 })->name('homepage');
+
+
+
 Route::get('/search/', [MovieController::class, 'searchUser'])->name('searchuser');
 Route::get('/current-movies', [MovieController::class, 'indexMovies'])->name('current.movie.index');
+Route::get('/movie/{id}/detail', [MovieController::class, 'show'])->name('current.movie.show');
 
 //dat ve
+Route::get('/buy-ticket/{id}', [SeatController::class, 'showFormOrder'])->name('showFormOrder');
+Route::post('/buy-ticket', [SeatController::class, 'orderTicket'])->name('orderTicket');
+
 
 Route::get('/buy-ticket', [MovieController::class, 'showFormOrder'])->name('orderTicket');
 

@@ -10,7 +10,6 @@
     </style>
 @endsection
 @section('content')
-
     <div class="col-12" style="margin-bottom: 150px">
         <div class="row">
             <div style="margin-left: 30%" class="col-8">
@@ -20,13 +19,13 @@
                     <label>Chọn ngày:
                         <input type="datetime-local" name="date">
                     </label><br><br>
-                    <select name="name" id="seat-type">
-                        <option value="#" disabled selected>--Chon Loai Ghe--</option>
-                            @foreach(\App\Models\SeatType::all() as $seattypes)
-                            <option value="{{$seattypes->name}}">{{$seattypes->name}}</option>
-                            @endforeach
-                    </select><br><br>
-                    <p>Chọn ghế:
+{{--                    <select name="name" id="seat-type">--}}
+{{--                        <option value="#" disabled selected>--Chon Loai Ghe--</option>--}}
+{{--                            @foreach(\App\Models\SeatType::all() as $seattypes)--}}
+{{--                            <option value="{{$seattypes->name}}">{{$seattypes->name}}</option>--}}
+{{--                            @endforeach--}}
+{{--                    </select><br><br>--}}
+{{--                    <p>Chọn ghế:--}}
 {{--                        <select name="name" id="select">--}}
 {{--                            <option value="#" disabled selected>--Available--</option>--}}
 {{--                            @foreach($seats as $seat)--}}
@@ -37,9 +36,10 @@
 {{--                                @endif--}}
 {{--                            @endforeach--}}
 {{--                        </select>--}}
-                    </p>
-
-                    <div style="width: 35%">
+{{--                    </p>--}}
+{{--                    ghe thuong--}}
+                    <p>Chon ghe: </p>
+                    <div id="normal" class="seats" style="width: 38%">
                         @foreach($seats as $key => $seat)
                             <input style="display: none" class="check-with-label seat" id="{{$key}}" type="checkbox"
                                    name="seats[]" value="{{$seat->name}}" data-price="{{$seat->seattype->price}}">
@@ -129,9 +129,6 @@
                    $("#foods").hide();
                }
             });
-
-            $("#seat-type")
-
 
             //checkbox
             // $('input[type="checkbox"]').mousedown(function() {

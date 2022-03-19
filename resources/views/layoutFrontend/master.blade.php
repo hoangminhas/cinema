@@ -10,6 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+{{--    Boostrap CSS--}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{asset("css/frontendcss/master/style.css")}}">
     {{-- Boostrap CSS --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
         integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
@@ -18,6 +21,18 @@
 </head>
 
 <body>
+<header id="header">
+    <div id="header-img">
+        <img src="{{asset("img/frontend/cinemaLogo2.png")}}" alt="Cinema's Logo">
+    </div>
+    <nav id="nav-bar" class="navbar navbar-expand-lg">
+        <a class="nav-link" href="{{route('homepage')}}">Trang chủ</a>
+        <a class="nav-link" href="{{route('current.movie.index')}}">Phim</a>
+        <a class="nav-link" href="#games">Lịch phát hành</a>
+        <a class="nav-link" href="#buy">Buy</a>
+        <a class="nav-link" href="{{route('login')}}">Đăng nhập</a>
+    </nav>
+</header>
     <header id="header">
         <div id="header-img">
             <img style="width:100px" src="img/frontend/cinemaLogo2.png" alt="KoalaMan's Store Logo">

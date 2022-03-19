@@ -21,10 +21,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/home', function () {
-    return view('frontend.movie.home');
-});
-
 Route::get('/', function () {
     return view('layoutbackend.index');
 
@@ -62,7 +58,9 @@ Route::get('/homepage', function () {
     return view('frontend.movie.home');
 })->name('homepage');
 
+
 Route::get('/current-movies', [MovieController::class, 'indexMovies'])->name('current.movie.index');
+Route::get('/movie/{id}/detail', [MovieController::class, 'show'])->name('current.movie.show');
 
 //dat ve
 Route::get('/buy-ticket', [SeatController::class, 'showFormOrder'])->name('showFormOrder');

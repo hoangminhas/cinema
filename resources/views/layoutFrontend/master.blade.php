@@ -17,7 +17,7 @@
 <body>
 <header id="header">
     <div id="header-img">
-        <img src="img/frontend/cinemaLogo2.png" alt="KoalaMan's Store Logo">
+        <img src="img/frontend/cinemaLogo2.png" alt="Cinema's Logo">
     </div>
     <nav id="nav-bar" class="navbar navbar-expand-lg">
         <a class="nav-link" href="{{route('homepage')}}">Trang chủ</a>

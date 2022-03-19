@@ -50,6 +50,8 @@ class MovieController extends Controller
     public function show($id)
     {
         //
+        $movie = $this->movieService->getMovieById($id);
+        return view('frontend.movie.show', compact('movie'));
     }
 
 
@@ -79,5 +81,7 @@ class MovieController extends Controller
         $movies = $this->movieService->getAllMovie();
         return view('frontend.movie.index', compact('movies'));
     }
+
+
 
 }

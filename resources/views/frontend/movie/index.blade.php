@@ -18,7 +18,7 @@
                                               <span>{{$category->name}}</span>
                                 @endforeach
                             </p>
-                            <a href="{{route('showFormOrder')}}" class="btn btn-danger">Đặt vé</a>
+                            <a href="{{route('current.movie.show',$movie->id)}}" class="btn btn-danger">Xem chi tiết</a>
                         </div>
                     </div>
                 </div><br><br>

@@ -37,6 +37,6 @@ abstract class BaseRepository implements BaseInterface
 
     public function getAllByEloquent()
     {
-        return $this->model::all();
+        return $this->model::all()->sortByDesc('id')->values();
     }
 }

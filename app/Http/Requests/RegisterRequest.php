@@ -31,4 +31,12 @@ class RegisterRequest extends FormRequest
             'confirmPassword' => 'bail|same:password'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'password.min'=>'Độ dài mật khẩu không đủ',
+            'confirmPassword.same' => "Mật khẩu không khớp"
+        ];
+    }
 }

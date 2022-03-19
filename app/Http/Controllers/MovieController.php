@@ -12,10 +12,7 @@ use App\Http\Requests\MovieRequest;
 
 use App\Repositories\MovieRepository;
 use App\Repositories\CategoryRepository;
-
-
-
-
+use Illuminate\Support\Facades\Auth;
 
 class MovieController extends Controller
 {
@@ -103,4 +100,20 @@ class MovieController extends Controller
         return view('backend.movie.index', compact('movies'));
     }
 
+    public function infor()
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+            // dd($user);
+            return view('frontend.user.infor', compact('user'));
+        }
+
+        return redirect()->back();
+    }
+
+    public function searchUser(Request $request)
+    {
+        $movies = $this->movieRepository->search($request);
+        return view('frontend.movie.index', compact('movies'));
+    }
 }

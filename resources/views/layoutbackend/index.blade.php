@@ -50,7 +50,7 @@
                                 data-toggle="dropdown" href="#"><i class="ficon ft-search"></i></a>
                             <ul class="dropdown-menu">
                                 <li class="arrow_box">
-                                    <form method="GET" action="{{route('search')}}">
+                                    <form method="GET" action="{{ route('search') }}">
                                         <div class="input-group search-box">
                                             <div class="position-relative has-icon-right full-width">
                                                 <input name="search" class="form-control" id="search" type="text"
@@ -81,9 +81,30 @@
                             </div>
                         </li> --}}
                     </ul>
-                    <ul class="nav navbar-nav float-right">
-                        <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#"
-                                data-toggle="dropdown"><i class="ficon ft-mail"> </i></a>
+                    <ul class="nav navbar-nav float-right mr-5">
+                        <li class="dropdown dropdown-user nav-item"><a
+                                class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                                <span>{{ Auth::user()->name ?? '' }}</span></a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <div class="arrow_box_right">
+                                    {{-- <a class="dropdown-item" href="#"><span
+                                            class="avatar avatar-online">John
+                                            Doe</span></span></a> --}}
+                                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i
+                                            class="ft-user"></i> Edit Profile</a><a class="dropdown-item"
+                                        href="#"><i class="ft-mail"></i> My Inbox</a><a class="dropdown-item"
+                                        href="#"><i class="ft-check-square"></i> Task</a><a class="dropdown-item"
+                                        href="#"><i class="ft-message-square"></i> Chats</a>
+                                    <div class="dropdown-divider"></div><a class="dropdown-item" href="{{route('logout')}}"><i
+                                            class="ft-power"></i> Logout</a>
+                                </div>
+                            </div>
+                        </li>
+                        {{-- <li class="dropdown dropdown-notification nav-item">
+                            <a class="nav-link nav-link-label" href="#"
+                                data-toggle="dropdown">
+                                <i class="ficon ft-mail"> </i>
+                            </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <div class="arrow_box_right"><a class="dropdown-item" href="#"><i
                                             class="ft-book"></i>
@@ -92,24 +113,7 @@
                                         Later</a><a class="dropdown-item" href="#"><i class="ft-check-square"></i> Mark
                                         all Read </a></div>
                             </div>
-                        </li>
-                        <li class="dropdown dropdown-user nav-item"><a
-                                class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                                <span class="avatar avatar-online">ADMIN</span></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <div class="arrow_box_right"><a class="dropdown-item" href="#"><span
-                                            class="avatar avatar-online">John
-                                            Doe</span></span></a>
-                                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i
-                                            class="ft-user"></i> Edit Profile</a><a class="dropdown-item"
-                                        href="#"><i class="ft-mail"></i> My Inbox</a><a class="dropdown-item"
-                                        href="#"><i class="ft-check-square"></i> Task</a><a class="dropdown-item"
-                                        href="#"><i class="ft-message-square"></i> Chats</a>
-                                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i
-                                            class="ft-power"></i> Logout</a>
-                                </div>
-                            </div>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </div>
@@ -129,23 +133,24 @@
                         <h3 class="brand-text">VLC-CINEMA</h3>
                     </a></li>
                 <li class="nav-item d-md-none"><a class="nav-link close-navbar"><i class="ft-x"></i></a></li>
-                <div class="nav-item dropdown navbar-search col-1"><a class="nav-link dropdown-toggle hide" data-toggle="dropdown"
-                    href="#"><i class="ficon ft-search"></i></a>
-                <div class="dropdown-menu">
-                    <li class="arrow_box">
-                        <form method="GET" action="{{route('search')}}">
-                            <div class="input-group search-box">
-                                <div class="position-relative has-icon-right full-width">
-                                    <input class="form-control" name="search" id="search" type="text" placeholder="Search here...">
-                                    <div class="form-control-position navbar-search-close"><i
-                                        class="ft-x">
-                                    </i></div>
+                <div class="nav-item dropdown navbar-search col-1"><a class="nav-link dropdown-toggle hide"
+                        data-toggle="dropdown" href="#"><i class="ficon ft-search"></i></a>
+                    <div class="dropdown-menu">
+                        <li class="arrow_box">
+                            <form method="GET" action="{{ route('search') }}">
+                                <div class="input-group search-box">
+                                    <div class="position-relative has-icon-right full-width">
+                                        <input class="form-control" name="search" id="search" type="text"
+                                            placeholder="Search here...">
+                                        <div class="form-control-position navbar-search-close"><i
+                                                class="ft-x">
+                                            </i></div>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
-                    </li>
+                            </form>
+                        </li>
+                    </div>
                 </div>
-            </div>
             </ul>
         </div>
         <div class="main-menu-content">
@@ -159,9 +164,9 @@
                 <li id="2" class=" nav-item"><a href="{{ route('food.index') }}"><i
                             class="ft-shopping-cart"></i><span class="menu-title" data-i18n="">Foods</span></a>
                 </li>
-                {{-- <li class=" nav-item"><a href="cards.html"><i class="ft-layers"></i><span
-                            class="menu-title" data-i18n="">Cards</span></a>
-                </li> --}}
+                <li class=" nav-item"><a href="{{route('user')}}"><i class="ft-layers"></i><span
+                            class="menu-title" data-i18n="">Home</span></a>
+                </li>
                 {{-- <li class=" nav-item"><a href="buttons.html"><i class="ft-box"></i><span
                             class="menu-title" data-i18n="">Buttons</span></a>
                 </li> --}}

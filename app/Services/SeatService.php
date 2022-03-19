@@ -21,4 +21,5 @@ class SeatService extends BaseService
     {
         return $this->seatRepository->getSeats($seatIds);
     }
+
 }

@@ -63,7 +63,7 @@ Route::get('/current-movies', [MovieController::class, 'indexMovies'])->name('cu
 Route::get('/movie/{id}/detail', [MovieController::class, 'show'])->name('current.movie.show');
 
 //dat ve
-Route::get('/buy-ticket', [SeatController::class, 'showFormOrder'])->name('showFormOrder');
+Route::get('/buy-ticket/{id}', [SeatController::class, 'showFormOrder'])->name('showFormOrder');
 Route::post('/buy-ticket', [SeatController::class, 'orderTicket'])->name('orderTicket');
 
 

@@ -1,5 +1,10 @@
 <?php
 
+use Laravel\Socialite\Facades\Socialite;
+// use Yoeunes\Toastr\ToastrServiceProvider;
+use Laravel\Socialite\SocialiteServiceProvider;
+use Yoeunes\Toastr\ToastrServiceProvider;
+
 return [
 
     /*
@@ -165,7 +170,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        ToastrServiceProvider::class,
         /*
          * Application Service Providers...
          */

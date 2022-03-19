@@ -29,25 +29,25 @@
                 <h2 style="text-align: center">List Movie</h2>
             </div>
             <div class="col-6"></div>
-            <div class="nav-item dropdown navbar-search col-1"><a class="nav-link dropdown-toggle hide" data-toggle="dropdown"
+            {{-- <div class="nav-item dropdown navbar-search col-1"><a class="nav-link dropdown-toggle hide" data-toggle="dropdown"
                     href="#"><i class="ficon ft-search"></i></a>
-                <ul class="dropdown-menu">
+                <div class="dropdown-menu">
                     <li class="arrow_box">
-                        <form>
+                        <form method="GET" action="{{route('search')}}">
                             <div class="input-group search-box">
                                 <div class="position-relative has-icon-right full-width">
-                                    <input class="form-control" id="search" type="text" placeholder="Search here...">
-                                    {{-- <div class="form-control-position navbar-search-close"><i
+                                    <input class="form-control" name="search" id="search" type="text" placeholder="Search here...">
+                                    <div class="form-control-position navbar-search-close"><i
                                         class="ft-x">
-                                    </i></div> --}}
+                                    </i></div>
                                 </div>
                             </div>
                         </form>
                     </li>
-                </ul>
-            </div>
+                </div>
+            </div> --}}
             <div class="col-2" style="text-align: right"><a href="{{ route('movie.store') }}"
-                    class="btn btn-md btn-info box-shadow-2 round btn-min-width pull-right">CREATEMOVIE</a></div>
+                    class="btn btn-md btn-info box-shadow-2 round btn-min-width pull-right">Create Movie</a></div>
         </div>
         <table
             class="table table-white-space table-bordered table-striped row-grouping display no-wrap icheck table-middle dataTable no-footer">

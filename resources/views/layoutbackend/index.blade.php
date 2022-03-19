@@ -28,19 +28,8 @@
     <link rel="stylesheet" type="text/css" href={{ asset('css/core/menu/menu-types/vertical-menu.css') }}>
     <link rel="stylesheet" type="text/css" href={{ asset('css/core/colors/palette-gradient.css') }}>
     <link rel="stylesheet" type="text/css" href={{ asset('css/pages/dashboard-ecommerce.css') }}>
-    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous"> --}}
 
-    {{-- <style>
-        body.vertical-layout.vertical-menu.menu-expanded .navbar .navbar-container {
-            margin-left: 246px;
-            margin-right: -13px;
-            margin-bottom: -8px;
-            margin-top: -6px;
-        }
-
-    </style> --}}
-
+    @toastr_css
 </head>
 
 <body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click"
@@ -57,14 +46,14 @@
                                 href="#"><i class="ft-menu"></i></a></li>
                         <li class="nav-item d-none d-md-block"><a class="nav-link nav-link-expand" href="#"><i
                                     class="ficon ft-maximize"></i></a></li>
-                        {{-- <li class="nav-item dropdown navbar-search"><a class="nav-link dropdown-toggle hide"
+                        <li class="nav-item dropdown navbar-search"><a class="nav-link dropdown-toggle hide"
                                 data-toggle="dropdown" href="#"><i class="ficon ft-search"></i></a>
                             <ul class="dropdown-menu">
                                 <li class="arrow_box">
-                                    <form>
+                                    <form method="GET" action="{{ route('search') }}">
                                         <div class="input-group search-box">
                                             <div class="position-relative has-icon-right full-width">
-                                                <input class="form-control" id="search" type="text"
+                                                <input name="search" class="form-control" id="search" type="text"
                                                     placeholder="Search here...">
                                                 <div class="form-control-position navbar-search-close"><i
                                                         class="ft-x">
@@ -74,7 +63,7 @@
                                     </form>
                                 </li>
                             </ul>
-                        </li> --}}
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav float-right">
                         {{-- <li class="dropdown dropdown-language nav-item"><a class="dropdown-toggle nav-link"
@@ -92,9 +81,30 @@
                             </div>
                         </li> --}}
                     </ul>
-                    <ul class="nav navbar-nav float-right">
-                        <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#"
-                                data-toggle="dropdown"><i class="ficon ft-mail"> </i></a>
+                    <ul class="nav navbar-nav float-right mr-5">
+                        <li class="dropdown dropdown-user nav-item"><a
+                                class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                                <span>{{ Auth::user()->name ?? '' }}</span></a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <div class="arrow_box_right">
+                                    {{-- <a class="dropdown-item" href="#"><span
+                                            class="avatar avatar-online">John
+                                            Doe</span></span></a> --}}
+                                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i
+                                            class="ft-user"></i> Edit Profile</a><a class="dropdown-item"
+                                        href="#"><i class="ft-mail"></i> My Inbox</a><a class="dropdown-item"
+                                        href="#"><i class="ft-check-square"></i> Task</a><a class="dropdown-item"
+                                        href="#"><i class="ft-message-square"></i> Chats</a>
+                                    <div class="dropdown-divider"></div><a class="dropdown-item" href="{{route('logout')}}"><i
+                                            class="ft-power"></i> Logout</a>
+                                </div>
+                            </div>
+                        </li>
+                        {{-- <li class="dropdown dropdown-notification nav-item">
+                            <a class="nav-link nav-link-label" href="#"
+                                data-toggle="dropdown">
+                                <i class="ficon ft-mail"> </i>
+                            </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <div class="arrow_box_right"><a class="dropdown-item" href="#"><i
                                             class="ft-book"></i>
@@ -103,24 +113,7 @@
                                         Later</a><a class="dropdown-item" href="#"><i class="ft-check-square"></i> Mark
                                         all Read </a></div>
                             </div>
-                        </li>
-                        <li class="dropdown dropdown-user nav-item"><a
-                                class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                                <span class="avatar avatar-online">ADMIN</span></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <div class="arrow_box_right"><a class="dropdown-item" href="#"><span
-                                            class="avatar avatar-online">John
-                                            Doe</span></span></a>
-                                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i
-                                            class="ft-user"></i> Edit Profile</a><a class="dropdown-item"
-                                        href="#"><i class="ft-mail"></i> My Inbox</a><a class="dropdown-item"
-                                        href="#"><i class="ft-check-square"></i> Task</a><a class="dropdown-item"
-                                        href="#"><i class="ft-message-square"></i> Chats</a>
-                                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i
-                                            class="ft-power"></i> Logout</a>
-                                </div>
-                            </div>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </div>
@@ -140,6 +133,24 @@
                         <h3 class="brand-text">VLC-CINEMA</h3>
                     </a></li>
                 <li class="nav-item d-md-none"><a class="nav-link close-navbar"><i class="ft-x"></i></a></li>
+                <div class="nav-item dropdown navbar-search col-1"><a class="nav-link dropdown-toggle hide"
+                        data-toggle="dropdown" href="#"><i class="ficon ft-search"></i></a>
+                    <div class="dropdown-menu">
+                        <li class="arrow_box">
+                            <form method="GET" action="{{ route('search') }}">
+                                <div class="input-group search-box">
+                                    <div class="position-relative has-icon-right full-width">
+                                        <input class="form-control" name="search" id="search" type="text"
+                                            placeholder="Search here...">
+                                        <div class="form-control-position navbar-search-close"><i
+                                                class="ft-x">
+                                            </i></div>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                    </div>
+                </div>
             </ul>
         </div>
         <div class="main-menu-content">
@@ -153,26 +164,26 @@
                 <li id="2" class=" nav-item"><a href="{{ route('food.index') }}"><i
                             class="ft-shopping-cart"></i><span class="menu-title" data-i18n="">Foods</span></a>
                 </li>
-                <li class=" nav-item"><a href="cards.html"><i class="ft-layers"></i><span
-                            class="menu-title" data-i18n="">Cards</span></a>
+                <li class=" nav-item"><a href="{{route('user')}}"><i class="ft-layers"></i><span
+                            class="menu-title" data-i18n="">Home</span></a>
                 </li>
-                <li class=" nav-item"><a href="buttons.html"><i class="ft-box"></i><span
+                {{-- <li class=" nav-item"><a href="buttons.html"><i class="ft-box"></i><span
                             class="menu-title" data-i18n="">Buttons</span></a>
-                </li>
-                <li class=" nav-item"><a href="typography.html"><i class="ft-bold"></i><span
+                </li> --}}
+                {{-- <li class=" nav-item"><a href="typography.html"><i class="ft-bold"></i><span
                             class="menu-title" data-i18n="">Typography</span></a>
-                </li>
-                <li class=" nav-item"><a href="tables.html"><i class="ft-credit-card"></i><span
+                </li> --}}
+                {{-- <li class=" nav-item"><a href="tables.html"><i class="ft-credit-card"></i><span
                             class="menu-title" data-i18n="">Tables</span></a>
-                </li>
-                <li class=" nav-item"><a href="form-elements.html"><i class="ft-layout"></i><span
+                </li> --}}
+                {{-- <li class=" nav-item"><a href="form-elements.html"><i class="ft-layout"></i><span
                             class="menu-title" data-i18n="">Form Elements</span></a>
-                </li>
-                <li class=" nav-item"><a
+                </li> --}}
+                {{-- <li class=" nav-item"><a
                         href="https://themeselection.com/demo/chameleon-admin-template/documentation"><i
                             class="ft-book"></i><span class="menu-title"
                             data-i18n="">Documentation</span></a>
-                </li>
+                </li> --}}
             </ul>
         </div>
         {{-- <a class="btn btn-danger btn-block btn-glow btn-upgrade-pro mx-1"
@@ -569,6 +580,9 @@
             })
         })
     </script> --}}
+    @jquery
+    @toastr_js
+    @toastr_render
 </body>
 
 </html>

@@ -11,15 +11,21 @@
         </div>
         <div class="card-content collapse show"></div>
         <div class="card-body">
-            <div class="media-list">
+            {{-- <div class="media-list"> --}}
+            <div class="row">
                 @foreach ($foods as $food)
-                    <div class="media">
-                        <a class="media-left" href="">
-                            <img src="{{ asset('storage/' . $food->image) }}" alt="Generic placeholder image"
-                                style="width: 200px;height: 200px;" />
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading"><span>{{ $food->name }}</span>
+                    <div class="col-4 mt-3">
+                        <div class="media">
+                            <a class="media-left" href="">
+                                <img src="{{ asset('storage/' . $food->image) }}" alt="Generic placeholder image"
+                                    style="width: 150px;height: 150px;" />
+                            </a>
+                            <div class="media-body ml-2">
+                                <h5 class="media-heading">{{ $food->name }}</h4>
+                                    <h5>Giá : {{ $food->price }}</h5>
+                            </div>
+                            <div class="media-right">
+
                                 <span class="dropdown">
                                     <button id="btnSearchDrop14" type="button"
                                         class="btn btn-sm btn-icon btn-pure font-medium-2" data-toggle="dropdown"
@@ -36,14 +42,11 @@
                                             <i class="ft-trash-2"></i>Update</a>
                                     </span>
                                 </span>
-                            </h4>
-                            <h5>Giá : {{ $food->price }}</h5>
-
+                            </div>
                         </div>
-                        {{-- <div class="meida-right">
-                        </div> --}}
                     </div>
                 @endforeach
+                {{-- </div> --}}
             </div>
         </div>
     </div>

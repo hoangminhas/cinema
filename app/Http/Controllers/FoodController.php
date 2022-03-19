@@ -18,8 +18,6 @@ class FoodController extends Controller
     public function index()
     {
         $foods = $this->foodRepository->getAll();
-        // dd($foods);
-        // $foods = Movie::all();
         return view('backend.food.index',compact('foods'));
     }
 
@@ -32,6 +30,7 @@ class FoodController extends Controller
     public function store(Request $request)
     {
         $this->foodRepository->store($request);
+        toastr()->success("Create Success");
         return redirect()->route('food.index');
     }
 
@@ -50,12 +49,14 @@ class FoodController extends Controller
     public function update(Request $request, $id)
     {
         $this->foodRepository->update($request,$id);
+        toastr()->success("Update Success");
         return redirect()->route('food.index');
     }
 
     public function destroy($id)
     {
         $this->foodRepository->deleteById($id);
+        toastr()->error("Delete Success");
         return redirect()->route('food.index');
     }
 }

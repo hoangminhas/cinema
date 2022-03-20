@@ -18,4 +18,9 @@ class Seat extends Model
     {
         return $this->belongsToMany(Movie::class);
     }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class);
+    }
 }

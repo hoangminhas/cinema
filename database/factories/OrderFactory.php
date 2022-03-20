@@ -21,8 +21,8 @@ class OrderFactory extends Factory
             'date' => $this->faker->dateTime(),
             'user_id'=> User::all()->random()->id,
             'movie_id'=> Movie::all()->random()->id,
-            'seat_id'=> Seat::all()->random()->id,
-            'food_id'=> Food::all()->random()->id
+//            'seat_id'=> Seat::all()->random()->id,
+//            'food_id'=> Food::all()->random()->id
         ];
     }
 }

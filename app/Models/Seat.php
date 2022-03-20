@@ -13,4 +13,9 @@ class Seat extends Model
     {
         return $this->belongsTo(SeatType::class);
     }
+
+    public function movies()
+    {
+        return $this->belongsToMany(Movie::class);
+    }
 }

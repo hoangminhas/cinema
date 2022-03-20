@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Carbon;
 use Spatie\Searchable\Search;
 use toastr;
 use App\Models\Movie;
@@ -52,11 +53,14 @@ class MovieController extends Controller
     public function show($id)
     {
         //
-        $movie = $this->movieService->getMovieById($id);
-        return view('frontend.movie.show', compact('movie'));
-
         $movies = $this->movieRepository->showFim($id);
         return view('backend.movie.list', compact('movies'));
+    }
+
+    public function showMovieById($id)
+    {
+        $movie = $this->movieService->getMovieById($id);
+        return view('frontend.movie.show', compact('movie'));
     }
 
 
@@ -83,16 +87,32 @@ class MovieController extends Controller
 
     public function indexMovies()
     {
-        $movies = $this->movieService->getAllMovie();
-        return view('frontend.movie.index', compact('movies'));
+//        $today = \Carbon\Carbon::today('Asia/Ho_Chi_Minh')->format('Y-m-d');
+//        $today = date('Y-m-d', strtotime($today));
+//        $currentMovies=[];
+//        $upCummingMovies=[];
+//        $movies = $this->movieService->getAllMovies();
+//        foreach ($movies as $movie) {
+//            $dateStart = date('Y-m-d', strtotime($movie->date_start));
+//            $dateEnd = date('Y-m-d', strtotime($movie->date_end));
+//            if ($dateStart <= $today && $today <= $dateEnd) {
+//                $currentMovies[] = $movie;
+//            } if ($dateStart > $today) {
+//                $upCummingMovies[] = $movie;
+//            }
+//        }
+        $allMovies = $this->movieService->getAllMovies();
+        $currentMovies = $allMovies[0];
+        $upCummingMovies = $allMovies[1];
+
+        return view('frontend.movie.index', compact(['currentMovies','upCummingMovies']));
     }
 
-
-
-    public function showFormOrder()
-    {
-        return view('frontend.movie.create');
-    }
+//    public function getShowingMovie()
+//    {
+//        $movies = $this->movieService->getShowingMovie();
+//        dd($movies);
+//    }
 
     public function home()
     {

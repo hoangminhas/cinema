@@ -23,7 +23,7 @@ class SeatSeeder extends Seeder
             for ($j=1; $j < 11; $j++) {
                 $seats = new Seat();
                 $seats->name = $arr[$i]. $j ;
-                $seats->status = 'null';
+//                $seats->status = 'null';
                 $seats->seattype_id = SeatType::all()->random()->id;
                 $seats->save();
             }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\MovieSeat;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,7 +24,8 @@ class DatabaseSeeder extends Seeder
             MovieSeeder::class,
             CategoryMovieSeeder::class,
             FoodSeeder::class,
-            OrderSeeder::class
+            OrderSeeder::class,
+            MovieSeatSeeder::class
         ]);
     }
 }

@@ -9,7 +9,6 @@ use App\Http\Controllers\MovieController;
 use App\Http\Controllers\SeatController;
 use App\Models\Movie;
 use Illuminate\Support\Facades\Route;
-use Laravel\Ui\AuthCommand;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,13 +22,13 @@ use Laravel\Ui\AuthCommand;
 */
 
 
-Route::get('/', function () {
-    return view('layoutbackend.index');
-});
 Route::get('/home', function () {
     return view('frontend.movie.home');
 })->name('user');
 
+Route::get('/', function () {
+    return view('layoutbackend.index');
+})->name('home');
 
 
 
@@ -80,9 +79,6 @@ Route::middleware('CheckAuth')->group(function () {
     });
 });
 
-
-
-
 //frontend
 Route::get('/homepage', function () {
     return view('frontend.movie.home');
@@ -92,14 +88,13 @@ Route::get('/homepage', function () {
 
 Route::get('/search/', [MovieController::class, 'searchUser'])->name('searchuser');
 Route::get('/current-movies', [MovieController::class, 'indexMovies'])->name('current.movie.index');
-Route::get('/movie/{id}/detail', [MovieController::class, 'show'])->name('current.movie.show');
+Route::get('/movie/{id}/detail', [MovieController::class, 'showMovieById'])->name('current.movie.show');
 
 //dat ve
-Route::get('/buy-ticket/{id}', [SeatController::class, 'showFormOrder'])->name('showFormOrder');
-Route::post('/buy-ticket', [SeatController::class, 'orderTicket'])->name('orderTicket');
+Route::middleware('checkMakeOrder')->group(function () {
+    Route::get('/buy-ticket/{id}', [SeatController::class, 'showFormOrder'])->name('showFormOrder');
+    Route::post('/buy-ticket', [SeatController::class, 'orderTicket'])->name('orderTicket');
+});
 
 
-Route::get('/buy-ticket', [MovieController::class, 'showFormOrder'])->name('orderTicket');
 
-Route::get('/buy-ticket', [SeatController::class, 'showFormOrder'])->name('showFormOrder');
-Route::post('/buy-ticket', [SeatController::class, 'orderTicket'])->name('orderTicket');

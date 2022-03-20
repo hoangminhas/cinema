@@ -115,7 +115,7 @@
             <div id="buy">
                 <img
                     src="https://media.istockphoto.com/vectors/cinema-vector-id848210156?b=1&k=20&m=848210156&s=612x612&w=0&h=aqFOea3f5HbaowlY_nVvVdMjAa_PxYaFvbfHI_rO8CI=">
-                <button type="submit" value="submit">Buy Now</button>
+                <button type="submit" value="submit"><a style="color: white; text-decoration: none" href="{{route('current.movie.index')}}">Buy Now</a></button>
             </div>
         </div>
 

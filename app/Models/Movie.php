@@ -14,4 +14,9 @@ class Movie extends Model
         return $this->belongsToMany(Category::class);
 
     }
+
+    public function seats()
+    {
+        return $this->belongsToMany(Seat::class);
+    }
 }

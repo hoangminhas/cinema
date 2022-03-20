@@ -47,7 +47,7 @@
         <p>Ngày phát hành: {{$movie->date_start}}</p>
         <p>Thể loại:
             @foreach($movie->categories as $category)
-                <span style="border-radius: 20px" class="btn btn-{{$category->color}}">{{$category->name}}</span>
+                <span style="border-radius: 20px; pointer-events: none" class="btn btn-{{$category->color}}">{{$category->name}}</span>
             @endforeach
         </p>
         <p>Ngôn ngữ: Tiếng Anh - Phụ đề Tiếng Việt</p>
@@ -59,7 +59,6 @@
         <br>
         <a class="btn btn-danger" href="{{route('showFormOrder', $movie->id)}}">Đặt vé</a>
         <a class="btn" style="background-color: #8899a6" href="{{route('current.movie.index')}}">Quay lại</a>
-
 
     </div>
 </div>

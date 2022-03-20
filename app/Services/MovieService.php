@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Repositories\MovieRepository;
 use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 
 class MovieService extends BaseService
 {
@@ -12,6 +13,15 @@ class MovieService extends BaseService
     public function __construct(MovieRepository $movieRepository)
     {
         $this->movieRepository = $movieRepository;
+    }
+
+    public function getAllDatesOfMovieById($id)
+    {
+        $movie = $this->movieRepository->getById($id);
+        $dateStart = date('Y-m-d', strtotime($movie->date_start));
+        $dateEnd = date('Y-m-d', strtotime($movie->date_end));
+        $dateRange = CarbonPeriod::create($dateStart, $dateEnd);
+        return $dateRange;
     }
 
     public function getAllMovies(): array

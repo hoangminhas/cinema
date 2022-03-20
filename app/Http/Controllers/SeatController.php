@@ -25,15 +25,18 @@ class SeatController extends Controller
     public function showFormOrder($id)
     {
         $movie = $this->movieService->getMovieById($id);
+        $dateRange = $this->movieService->getAllDatesOfMovieById($id)->toArray();
+
         $seats = $this->seatService->getAllSeats();
         $foods = $this->foodService->getAllFood();
-        return view('frontend.movie.create', compact(['seats', 'foods','movie']));
+        return view('frontend.movie.create', compact(['seats', 'foods', 'movie', 'dateRange']));
     }
 
     public function orderTicket(Request $request)
     {
-        $orderSeats = $this->getSeats($request->seats);
-        dd($orderSeats);
+//        $orderSeats = $this->getSeats($request->seats);
+            $order = $request->except('_token');
+        dd($order);
     }
 
     public function getSeats($seatIds)

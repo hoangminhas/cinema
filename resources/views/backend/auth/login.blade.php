@@ -12,7 +12,7 @@
 <body>
 
 <div class="login">
-    <h1>Login</h1>
+    <h1 style="color: red">Login</h1>
     <form action="{{route('login')}}" method="post">
         @csrf
         <input type="email" name="email" placeholder="Email" required="required" />
@@ -20,8 +20,8 @@
         <input type="password" name="password" placeholder="Password" required="required" />
         <p style="color: red">{{$errors->has('password') ? $errors->first('password') : ''}}</p>
         <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button> <br>
-        <button type="button" class="btn btn-primary btn-block btn-large"><a style="color: white; text-decoration: none" href="{{route('showFormRegister')}}">Sign Up</a></button><br>
-        <button type="button" class="btn btn-primary btn-block btn-large"><a style="color: white; text-decoration: none" href="{{url('auth/redirect/google')}}">Login with Google</a></button>
+        <a class="btn btn-primary btn-block btn-large" style="color: white; text-decoration: none" href="{{route('showFormRegister')}}">Sign Up</a><br>
+        <a class="btn btn-primary btn-block btn-large" style="color: white; text-decoration: none" href="{{url('auth/redirect/google')}}">Login with Google</a>
     </form>
 </div>
 

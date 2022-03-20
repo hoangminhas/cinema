@@ -17,6 +17,6 @@ class Movie extends Model
 
     public function seats()
     {
-        return $this->belongsToMany(Seat::class);
+        return $this->belongsToMany(Seat::class)->withPivot('status');
     }
 }

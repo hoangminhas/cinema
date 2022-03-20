@@ -24,4 +24,5 @@ class SeatRepository extends BaseRepository
     }
 
 
+
 }

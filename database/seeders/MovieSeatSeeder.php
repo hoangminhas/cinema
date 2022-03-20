@@ -21,7 +21,7 @@ class MovieSeatSeeder extends Seeder
                 $movieSeat = new MovieSeat();
                 $movieSeat->movie_id = $i;
                 $movieSeat->seat_id = $j;
-                $movieSeat->status = "nul";
+                $movieSeat->status = "null";
                 $movieSeat->save();
             }
         }

@@ -2,14 +2,18 @@
 
 namespace App\Services;
 
+use App\Repositories\MovieRepository;
 use App\Repositories\SeatRepository;
 
 class SeatService extends BaseService
 {
     public $seatRepository;
-    public function __construct(SeatRepository $seatRepository)
+    public $movieRepository;
+    public function __construct(SeatRepository $seatRepository,
+                                MovieRepository $movieRepository)
     {
         $this->seatRepository = $seatRepository;
+        $this->movieRepository = $movieRepository;
     }
 
     public function getAllSeats()
@@ -21,5 +25,13 @@ class SeatService extends BaseService
     {
         return $this->seatRepository->getSeats($seatIds);
     }
+
+    public function getAllSeatsByMovieId($id)
+    {
+        $thisMovie = $this->movieRepository->getById($id);
+        $currentSeats = $thisMovie->seats;
+        return $currentSeats;
+    }
+
 
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\FoodService;
+use App\Services\MovieSeatService;
 use App\Services\MovieService;
 use App\Services\SeatService;
 use Illuminate\Http\Request;
@@ -26,8 +27,10 @@ class SeatController extends Controller
     {
         $movie = $this->movieService->getMovieById($id);
         $dateRange = $this->movieService->getAllDatesOfMovieById($id)->toArray();
-
-        $seats = $this->seatService->getAllSeats();
+        $seats = $this->seatService->getAllSeatsByMovieId($id);
+//        foreach ($movie->seats as $seat) {
+//            dd($seat->pivot);
+//        }
         $foods = $this->foodService->getAllFood();
         return view('frontend.movie.create', compact(['seats', 'foods', 'movie', 'dateRange']));
     }

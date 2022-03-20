@@ -8,6 +8,11 @@
             background-color: hotpink;
         }
 
+        .not-null + .label-for-check{
+            background-color: grey;
+            pointer-events: none;
+        }
+
         .screen {
             background-color: #fff;
             width: 40%;
@@ -41,7 +46,8 @@
                         @csrf
                         <input type="hidden" name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
                         <input type="hidden" name="movie_id" value="{{$movie->id}}">
-                        <h2 style="color: red">Order Ticket</h2><br>
+                        <h2 style="color: red">Order Ticket</h2><br><br>
+                        <p>Phim: {{$movie->name}}</p>
                         <label for="date">Chọn ngày:
                             <select name="date" id="date-select">
                                 <option value="#" disabled selected>--Chọn Ngày--</option>
@@ -50,7 +56,7 @@
                                 @endforeach
                             </select>
                         </label><br>
-                        <p>Chon ghe: </p>
+                        <p>Chọn ghế: </p>
                         <div class="container-screen">
                             <div class="screen">
                                 <span id="movie-screen">Movie Screen</span>
@@ -59,9 +65,15 @@
                         <br>
                         <div id="normal" class="seats" style="width: 50%">
                             @foreach($seats as $key => $seat)
-                                <input style="display: none" class="check-with-label seat"
+                                @if($seat->pivot->status == "null")
+                                    <input style="display: none" class="check-with-label seat"
                                        id="{{$key}}" type="checkbox" name="seats[]" value="{{$seat->id}}"
                                        data-name="{{$seat->name}}" data-price="{{$seat->seattype->price}}">
+                                @else
+                                    <input  style="display: none" class="check-with-label not-null seat"
+                                           id="" type="checkbox" name="seats[]" value="{{$seat->id}}"
+                                           data-name="{{$seat->name}}" data-price="{{$seat->seattype->price}}">
+                                @endif
                                 <label class="label-for-check" for="{{$key}}"
                                        style="color: dimgray; border: 2px solid orange">
                                     {{$seat->name}}
@@ -106,6 +118,7 @@
                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">
                             Order
                         </button>
+                        <a class="btn" style="background-color: #8899a6" href="{{route('current.movie.index')}}">Back</a>
 
                         <!-- Modal -->
                         <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false"

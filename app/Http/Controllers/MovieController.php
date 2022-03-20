@@ -105,6 +105,7 @@ class MovieController extends Controller
         $currentMovies = $allMovies[0];
         $upCummingMovies = $allMovies[1];
 
+
         return view('frontend.movie.index', compact(['currentMovies','upCummingMovies']));
     }
 

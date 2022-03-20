@@ -41,9 +41,10 @@ class SeatController extends Controller
 
     public function orderTicket(Request $request)
     {
+//            dd($request->user_id);
 //        $orderSeats = $this->getSeats($request->seats);
         $this->orderService->storeOrder($request);
-        return $this->movieController->indexMovies();
+        return view('frontend.movie.ticket');
     }
 
     public function getSeats($seatIds)

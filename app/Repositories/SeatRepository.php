@@ -16,6 +16,7 @@ class SeatRepository extends BaseRepository
     public function getTable()
     {
         // TODO: Implement getTable() method.
+        return 'seats';
     }
 
     public function getSeats($seatIds)

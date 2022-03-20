@@ -18,7 +18,7 @@ class CreateMovieSeatTable extends Migration
             $table->unsignedBigInteger('seat_id');
             $table->foreign('movie_id')->references('id')->on('movies');
             $table->foreign('seat_id')->references('id')->on('seats');
-            $table->string('status');
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

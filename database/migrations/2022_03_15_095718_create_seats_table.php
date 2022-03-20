@@ -16,7 +16,7 @@ class CreateSeatsTable extends Migration
         Schema::create('seats', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('status');
+//            $table->string('status');
             $table->unsignedBigInteger('seattype_id');
             $table->foreign('seattype_id')->references('id')->on('seat_types');
             $table->timestamps();

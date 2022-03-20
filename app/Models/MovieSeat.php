@@ -5,13 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SeatType extends Model
+class MovieSeat extends Model
 {
     use HasFactory;
 
-    public function seats()
-    {
-        return $this->hasMany(Seat::class);
-    }
-
+    protected $table = "movie_seat";
 }

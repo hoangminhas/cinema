@@ -16,8 +16,9 @@ class CreateMovieSeatTable extends Migration
         Schema::create('movie_seat', function (Blueprint $table) {
             $table->unsignedBigInteger('movie_id');
             $table->unsignedBigInteger('seat_id');
-            $table->foreign('movie_id')->references('id')->on('movies')->cascadeOnDelete();
-            $table->foreign('seat_id')->references('id')->on('seats')->cascadeOnDelete();
+            $table->foreign('movie_id')->references('id')->on('movies');
+            $table->foreign('seat_id')->references('id')->on('seats');
+            $table->string('status');
             $table->timestamps();
         });
     }

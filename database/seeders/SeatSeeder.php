@@ -20,7 +20,7 @@ class SeatSeeder extends Seeder
         // $arr1 = ['null','notnull'];
 
         for ($i=0; $i < count($arr) ; $i++) {
-            for ($j=1; $j < 11; $j++) {
+            for ($j=1; $j < 6; $j++) {
                 $seats = new Seat();
                 $seats->name = $arr[$i]. $j ;
 //                $seats->status = 'null';

@@ -42,6 +42,11 @@
                     <label for="{{ $category->name }}" style="padding-right: 20px">{{ $category->name }}</label>
                 @endforeach
             </div>
+            <div>
+                @foreach ($seats as $seat)
+                    <input type="checkbox" checked hidden value="{{$seat->id}}" name="seat[]">
+                @endforeach
+            </div>
             <p style="color: brown">{{ $errors->has('category') ? $errors->first('category') : '' }}</p>
             <div class="row mt-2">
                 <div class="col-2"> <button type="submit"

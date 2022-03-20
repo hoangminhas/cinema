@@ -121,4 +121,5 @@ class MovieRepository extends BaseRepository
             ->where('movies.name', 'LIKE', "%{$search}%")
             ->get();
     }
+
 }

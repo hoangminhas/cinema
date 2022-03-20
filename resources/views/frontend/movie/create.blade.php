@@ -82,7 +82,7 @@
                         </div>
                         <br>
 
-                        <p>Giá: <span id="price-span"></span></p>
+                        <p>Giá: <span class="price-span"></span></p>
                         <p>Số lượng ghế: <span class="seats-span"></span></p>
                         <p>Đồ ăn:
                         <input id="yes" type="radio" name="f&d" value="yes">
@@ -136,10 +136,11 @@
                                         <p>Ngày: <span id="pickDate"></span></p>
                                         <p>Ghế: <span id="seats-name-span"></span></p>
                                         <p>Số lượng: <span class="seats-span"></span></p>
+                                        <p>Tổng tiền: <span class="price-span"></span></p>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Understood</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Suy nghĩ lại</button>
+                                        <button type="submit" class="btn btn-primary">Thanh Toán</button>
                                     </div>
                                 </div>
                             </div>
@@ -165,7 +166,7 @@
                     totalSeat++;
                     seats += $(this).attr('data-name') + " ";
                 });
-                $("#price-span").html(totalPrice.toLocaleString("it-IT", {style: "currency", currency: "VND"}));
+                $(".price-span").html(totalPrice.toLocaleString("it-IT", {style: "currency", currency: "VND"}));
                 $(".seats-span").html(totalSeat);
                 $("#seats-name-span").html(seats);
 

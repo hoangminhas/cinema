@@ -47,7 +47,11 @@
                 @endforeach
             </div>
             <p style="color: brown">{{ $errors->has('category') ? $errors->first('category') : '' }}</p>
-
+            <div>
+                @foreach ($seats as $seat)
+                    <input type="checkbox" checked value="{{$seat->id}}" hidden>
+                @endforeach
+            </div>
             <div class="row mt-2">
                 <div class="col-2"> <button type="submit" class="btn btn-info round btn-min-width mr-1 mb-1">Update
                         Movie</button></div>

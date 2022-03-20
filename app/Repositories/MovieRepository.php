@@ -74,6 +74,7 @@ class MovieRepository extends BaseRepository
         $movie->save();
 
         $movie->categories()->sync($request->category);
+        $movie->seats()->sync($request->seat);
     }
 
 
@@ -94,12 +95,14 @@ class MovieRepository extends BaseRepository
         $movie->save();
 
         $movie->categories()->sync($request->category);
+        $movie->seats()->sync($request->seat);
     }
 
     public function delete($id)
     {
         DB::table('orders')->where('movie_id',$id)->delete();
         DB::table('category_movie')->where('movie_id', $id)->delete();
+        DB::table('movie_seat')->where('movie_id',$id)->delete();
         DB::table($this->table)->where('id', $id)->delete();
     }
 

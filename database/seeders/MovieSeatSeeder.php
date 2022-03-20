@@ -17,11 +17,12 @@ class MovieSeatSeeder extends Seeder
     {
         //
         for ($i=1; $i<11; $i++) {
-            for ($j=1; $j<31; $j++) {
+            for ($j=1; $j<16; $j++) {
                 $movieSeat = new MovieSeat();
                 $movieSeat->movie_id = $i;
                 $movieSeat->seat_id = $j;
                 $movieSeat->status = "null";
+                // $movieSeat->status = " ";
                 $movieSeat->save();
             }
         }

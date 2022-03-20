@@ -13,21 +13,27 @@ use App\Http\Requests\MovieRequest;
 
 use App\Repositories\MovieRepository;
 use App\Repositories\CategoryRepository;
+use App\Repositories\SeatRepository;
 use Illuminate\Support\Facades\Auth;
+use phpDocumentor\Reflection\Types\This;
 
 class MovieController extends Controller
 {
     public $movieRepository;
     public $categoryRepository;
     public $movieService;
+    public $seatRepository;
     public function __construct(
         MovieRepository $movieRepository,
         CategoryRepository $categoryRepository,
-        MovieService $movieService
+        MovieService $movieService,
+        SeatRepository $seatRepository
     ) {
         $this->movieRepository = $movieRepository;
         $this->categoryRepository = $categoryRepository;
         $this->movieService = $movieService;
+        $this->seatRepository = $seatRepository;
+
     }
 
     public function index()
@@ -39,11 +45,14 @@ class MovieController extends Controller
     public function create()
     {
         $categories = $this->categoryRepository->getAll();
-        return view('backend.movie.create', compact('categories'));
+        $seats = $this->seatRepository->getAll();
+        // dd($seats);
+        return view('backend.movie.create', compact('categories','seats'));
     }
 
     public function store(MovieRequest $request)
     {
+        // dd($request);
         $this->movieRepository->store($request);
         toastr()->success("Create Success");
         return redirect()->route('movie.index');
@@ -68,7 +77,8 @@ class MovieController extends Controller
     {
         $movie = $this->movieRepository->getById($id);
         $categories = $this->categoryRepository->getAll();
-        return view('backend.movie.update', compact('movie', 'categories'));
+        $seats = $this->seatRepository->getAll();
+        return view('backend.movie.update', compact('movie', 'categories','seats'));
     }
 
     public function update(MovieRequest $request, $id)

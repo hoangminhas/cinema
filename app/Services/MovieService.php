@@ -28,15 +28,16 @@ class MovieService extends BaseService
     {
         $today = Carbon::today('Asia/Ho_Chi_Minh')->format('Y-m-d');
         $today = date('Y-m-d', strtotime($today));
-        $currentMovies=[];
-        $upCummingMovies=[];
+        $currentMovies = [];
+        $upCummingMovies = [];
         $movies = $this->movieRepository->getAllByEloquent();
         foreach ($movies as $movie) {
             $dateStart = date('Y-m-d', strtotime($movie->date_start));
             $dateEnd = date('Y-m-d', strtotime($movie->date_end));
             if ($dateStart <= $today && $today <= $dateEnd) {
                 $currentMovies[] = $movie;
-            } if ($dateStart > $today) {
+            }
+            if ($dateStart > $today) {
                 $upCummingMovies[] = $movie;
             }
         }
@@ -48,4 +49,23 @@ class MovieService extends BaseService
         return $this->movieRepository->getById($id);
     }
 
+    public function searchUser($request)
+    {
+        $today = \Carbon\Carbon::today('Asia/Ho_Chi_Minh')->format('Y-m-d');
+        $today = date('Y-m-d', strtotime($today));
+        $currentMovies = [];
+        $upCummingMovies = [];
+        $movies = $this->movieRepository->search($request);
+        foreach ($movies as $movie) {
+            $dateStart = date('Y-m-d', strtotime($movie->date_start));
+            $dateEnd = date('Y-m-d', strtotime($movie->date_end));
+            if ($dateStart <= $today && $today <= $dateEnd) {
+                $currentMovies[] = $movie;
+            }
+            if ($dateStart > $today) {
+                $upCummingMovies[] = $movie;
+            }
+        }
+        return [$currentMovies, $upCummingMovies];
+    }
 }

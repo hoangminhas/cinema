@@ -124,4 +124,14 @@ class MovieRepository extends BaseRepository
             ->where('movies.name', 'LIKE', "%{$search}%")
             ->get();
     }
+
+    // public function searchUser($request)
+    // {
+    //     $search = $request->input('search');
+    //     return Movie::query()
+    //         ->where('movies.name', 'LIKE', "%{$search}%")
+    //         ->get();
+    // }
+
+
 }

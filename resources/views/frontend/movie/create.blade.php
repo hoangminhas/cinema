@@ -57,7 +57,7 @@
                             </div>
                         </div>
                         <br>
-                        <div id="normal" class="seats" style="width: 50%">
+                        <div id="normal" class="seats ml-5" style="width: 20%">
                             @foreach($seats as $key => $seat)
                                 <input style="display: none" class="check-with-label seat"
                                        id="{{$key}}" type="checkbox" name="seats[]" value="{{$seat->id}}"
@@ -85,7 +85,7 @@
                                 @foreach($foods as $food)
                                     <div class="col-4">
                                         <div class="card">
-                                            <img class="card-img-top" src="{{$food->image}}" alt="food">
+                                            <img class="card-img-top" src="{{asset('storage/'.$food->image)}}" alt="food">
                                             <div class="card-body">
                                                 <h5 class="card-title">{{$food->name}}</h5>
                                                 <p class="card-text">Giá: {{$food->price}} vnd</p>

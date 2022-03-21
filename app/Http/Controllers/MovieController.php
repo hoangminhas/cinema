@@ -33,7 +33,6 @@ class MovieController extends Controller
         $this->categoryRepository = $categoryRepository;
         $this->movieService = $movieService;
         $this->seatRepository = $seatRepository;
-
     }
 
     public function index()
@@ -46,13 +45,11 @@ class MovieController extends Controller
     {
         $categories = $this->categoryRepository->getAll();
         $seats = $this->seatRepository->getAll();
-        // dd($seats);
-        return view('backend.movie.create', compact('categories','seats'));
+        return view('backend.movie.create', compact('categories', 'seats'));
     }
 
     public function store(MovieRequest $request)
     {
-        // dd($request);
         $this->movieRepository->store($request);
         toastr()->success("Create Success");
         return redirect()->route('movie.index');
@@ -61,7 +58,6 @@ class MovieController extends Controller
 
     public function show($id)
     {
-        //
         $movies = $this->movieRepository->showFim($id);
         return view('backend.movie.list', compact('movies'));
     }
@@ -78,7 +74,7 @@ class MovieController extends Controller
         $movie = $this->movieRepository->getById($id);
         $categories = $this->categoryRepository->getAll();
         $seats = $this->seatRepository->getAll();
-        return view('backend.movie.update', compact('movie', 'categories','seats'));
+        return view('backend.movie.update', compact('movie', 'categories', 'seats'));
     }
 
     public function update(MovieRequest $request, $id)
@@ -97,32 +93,32 @@ class MovieController extends Controller
 
     public function indexMovies()
     {
-//        $today = \Carbon\Carbon::today('Asia/Ho_Chi_Minh')->format('Y-m-d');
-//        $today = date('Y-m-d', strtotime($today));
-//        $currentMovies=[];
-//        $upCummingMovies=[];
-//        $movies = $this->movieService->getAllMovies();
-//        foreach ($movies as $movie) {
-//            $dateStart = date('Y-m-d', strtotime($movie->date_start));
-//            $dateEnd = date('Y-m-d', strtotime($movie->date_end));
-//            if ($dateStart <= $today && $today <= $dateEnd) {
-//                $currentMovies[] = $movie;
-//            } if ($dateStart > $today) {
-//                $upCummingMovies[] = $movie;
-//            }
-//        }
+        //        $today = \Carbon\Carbon::today('Asia/Ho_Chi_Minh')->format('Y-m-d');
+        //        $today = date('Y-m-d', strtotime($today));
+        //        $currentMovies=[];
+        //        $upCummingMovies=[];
+        //        $movies = $this->movieService->getAllMovies();
+        //        foreach ($movies as $movie) {
+        //            $dateStart = date('Y-m-d', strtotime($movie->date_start));
+        //            $dateEnd = date('Y-m-d', strtotime($movie->date_end));
+        //            if ($dateStart <= $today && $today <= $dateEnd) {
+        //                $currentMovies[] = $movie;
+        //            } if ($dateStart > $today) {
+        //                $upCummingMovies[] = $movie;
+        //            }
+        //        }
         $allMovies = $this->movieService->getAllMovies();
         $currentMovies = $allMovies[0];
         $upCummingMovies = $allMovies[1];
 
-        return view('frontend.movie.index', compact(['currentMovies','upCummingMovies']));
+        return view('frontend.movie.index', compact(['currentMovies', 'upCummingMovies']));
     }
 
-//    public function getShowingMovie()
-//    {
-//        $movies = $this->movieService->getShowingMovie();
-//        dd($movies);
-//    }
+    //    public function getShowingMovie()
+    //    {
+    //        $movies = $this->movieService->getShowingMovie();
+    //        dd($movies);
+    //    }
 
     public function home()
     {
@@ -139,7 +135,6 @@ class MovieController extends Controller
     {
         if (Auth::check()) {
             $user = Auth::user();
-            // dd($user);
             return view('frontend.user.infor', compact('user'));
         }
 
@@ -148,7 +143,9 @@ class MovieController extends Controller
 
     public function searchUser(Request $request)
     {
-        $movies = $this->movieRepository->search($request);
-        return view('frontend.movie.index', compact('movies'));
+        $movies = $this->movieService->searchUser($request);
+        $currentMovies = $movies[0];
+        $upCummingMovies = $movies[1];
+        return view('frontend.movie.index', compact(['currentMovies', 'upCummingMovies']));
     }
 }

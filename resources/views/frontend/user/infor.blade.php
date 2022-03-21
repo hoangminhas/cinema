@@ -13,8 +13,8 @@
             <h3>Name : {{ $user->name }}</h3> <br>
             <h3>Email : {{ $user->email }}</h3> <br>
             <h3>Login With : {{ $user->social_type ?? 'none' }}</h3> <br>
+            <h3>Lịch sử giao dịch : </h3>
             <h3><a href="{{route('password')}}">Đổi Mật Khẩu</a></h3>
-            {{-- <h3></h3> --}}
         </fieldset>
 
     </div>

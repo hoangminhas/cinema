@@ -20,10 +20,10 @@ class SeatSeeder extends Seeder
         // $arr1 = ['null','notnull'];
 
         for ($i=0; $i < count($arr) ; $i++) {
-            for ($j=0; $j < 5; $j++) {
+            for ($j=1; $j < 6; $j++) {
                 $seats = new Seat();
-                $seats->name = $i. $j ;
-                $seats->status = 'null';
+                $seats->name = $arr[$i]. $j ;
+//                $seats->status = 'null';
                 $seats->seattype_id = SeatType::all()->random()->id;
                 $seats->save();
             }

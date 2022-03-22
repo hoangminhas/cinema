@@ -7,20 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="css/auth/login/style.css">
-
+    @toastr_css
 </head>
 <body>
+
 <div class="login">
-    <h1>Login</h1>
+    <h1 style="color: red">Login</h1>
     <form action="{{route('login')}}" method="post">
         @csrf
         <input type="email" name="email" placeholder="Email" required="required" />
         <p style="color: red">{{$errors->has('email') ? $errors->first('email') : ''}}</p>
         <input type="password" name="password" placeholder="Password" required="required" />
         <p style="color: red">{{$errors->has('password') ? $errors->first('password') : ''}}</p>
-        <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
-        <button type="button" class="btn btn-primary btn-block btn-large"><a style="color: white; text-decoration: none" href="{{route('showFormRegister')}}">Sign Up</a></button>
-        <button type="button" class="btn btn-primary btn-block btn-large"><a style="color: white; text-decoration: none" href="{{route('google.auth')}}">Login with Google</a></button>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button> <br>
+        <a class="btn btn-primary btn-block btn-large" style="color: white; text-decoration: none" href="{{route('showFormRegister')}}">Sign Up</a><br>
+        <a class="btn btn-primary btn-block btn-large" style="color: white; text-decoration: none" href="{{url('auth/redirect/google')}}">Login with Google</a>
     </form>
 </div>
 
@@ -33,5 +34,8 @@
 {{--    <p style="color: red">{{$errors->has('password') ? $errors->first('password') : ''}}</p>--}}
 {{--    <button>Login</button>--}}
 {{--</form>--}}
+@jquery
+    @toastr_js
+    @toastr_render
 </body>
 </html>

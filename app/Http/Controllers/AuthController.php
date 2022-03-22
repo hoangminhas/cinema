@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ChangePassword;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
@@ -12,7 +13,8 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    //
+    // public C $ADMIN = '1';
+
     public $userService;
 
     public function __construct(UserService $userService)
@@ -28,10 +30,9 @@ class AuthController extends Controller
     public function login(LoginRequest $request)
     {
         if ($this->userService->login($request)) {
-            return 'nic2e';
-        } else {
-            return redirect()->back();
+            return redirect()->route('user');
         }
+        return redirect()->back();
     }
 
     public function showFormRegister()
@@ -41,14 +42,26 @@ class AuthController extends Controller
 
     public function register(RegisterRequest $request)
     {
+        // dd($request);
         $this->userService->register($request);
+        toastr()->success("Register Success");
         return redirect()->route('login');
     }
+
 
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('login');
+        return redirect()->route('user');
     }
 
+    public function password()
+    {
+        return view('frontend.user.password');
+    }
+
+    public function changePassword(Request $request)
+    {
+        dd($request);
+    }
 }

@@ -26,7 +26,8 @@ class LoginRequest extends FormRequest
         return [
             //
             'email'=>'bail|required|email',
-            'password'=>'bail|required|min:6'
+            'password'=>'bail|required'
         ];
     }
+
 }

@@ -17,11 +17,12 @@ class CreateMoviesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('duration');
-            $table->string('summary');
+            $table->text('summary');
             $table->string('image');
-            $table->unsignedBigInteger('category_id');
-            $table->dateTime('date');
-            $table->foreign('category_id')->references('id')->on('categories');
+            // $table->unsignedBigInteger('category_id');
+            $table->date('date_start');
+            $table->date('date_end');
+            // $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }

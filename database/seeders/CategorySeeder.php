@@ -16,26 +16,32 @@ class CategorySeeder extends Seeder
     {
         $category = new Category();
         $category->name = 'Hành động';
+        $category->color = 'primary';
         $category->save();
 
         $category = new Category();
         $category->name = 'Kinh dị';
+        $category->color = 'dark';
         $category->save();
 
         $category = new Category();
         $category->name = 'Giật gân';
+        $category->color = 'info';
         $category->save();
 
         $category = new Category();
         $category->name = 'Lãng mạn';
+        $category->color = 'danger';
         $category->save();
 
         $category = new Category();
         $category->name = 'Phiêu lưu';
+        $category->color = 'success';
         $category->save();
 
         $category = new Category();
         $category->name = 'Anime';
+        $category->color = 'warning';
         $category->save();
     }
 }

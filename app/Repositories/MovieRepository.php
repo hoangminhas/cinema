@@ -100,9 +100,9 @@ class MovieRepository extends BaseRepository
 
     public function delete($id)
     {
-        DB::table('orders')->where('movie_id',$id)->delete();
+        DB::table('orders')->where('movie_id', $id)->delete();
         DB::table('category_movie')->where('movie_id', $id)->delete();
-        DB::table('movie_seat')->where('movie_id',$id)->delete();
+        DB::table('movie_seat')->where('movie_id', $id)->delete();
         DB::table($this->table)->where('id', $id)->delete();
     }
 
@@ -113,8 +113,6 @@ class MovieRepository extends BaseRepository
             ->join('categories', 'categories.id', '=', 'category_movie.category_id')
             ->where('categories.id', $id)
             ->select('movies.*', 'categories.name as category', 'categories.color as color')->orderBy('movies.id', 'DESC')->get();
-
-        // return Category::findOrFail($id);
     }
 
     public function search($request)
@@ -124,14 +122,4 @@ class MovieRepository extends BaseRepository
             ->where('movies.name', 'LIKE', "%{$search}%")
             ->get();
     }
-
-    // public function searchUser($request)
-    // {
-    //     $search = $request->input('search');
-    //     return Movie::query()
-    //         ->where('movies.name', 'LIKE', "%{$search}%")
-    //         ->get();
-    // }
-
-
 }

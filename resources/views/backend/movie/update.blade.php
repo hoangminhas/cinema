@@ -49,7 +49,7 @@
             <p style="color: brown">{{ $errors->has('category') ? $errors->first('category') : '' }}</p>
             <div>
                 @foreach ($seats as $seat)
-                    <input type="checkbox" checked value="{{$seat->id}}" hidden>
+                    <input type="checkbox" name="seat[]" checked value="{{$seat->id}}" hidden>
                 @endforeach
             </div>
             <div class="row mt-2">

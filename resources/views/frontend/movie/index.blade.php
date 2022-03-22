@@ -9,7 +9,7 @@
             @foreach ($currentMovies as $movie)
                 <div class="col-4" style="margin: 15px 0px">
                     <div class="card" style="width: 25rem; height: 33em">
-                        <img src="{{$movie->image}}" class="card-img-top" alt="movie">
+                        <img style="width: 25rem; height: 20em" src="{{asset('storage/'.$movie->image)}}" class="card-img-top" alt="movie">
                         <div class="card-body">
                             <h5 class="card-title">{{$movie->name}}</h5>
                             <p class="card-text">{{ $movie->duration }} phút</p>
@@ -36,7 +36,7 @@
             @foreach ($upCummingMovies as $movie)
                     <div class="col-4" style="margin: 15px 0px">
                         <div class="card" style="width: 25rem; height: 33em">
-                            <img src="{{ $movie->image }}" class="card-img-top" alt="movie">
+                            <img style="width: 25rem; height: 20em" src="{{asset('storage/'.$movie->image)}}" class="card-img-top" alt="movie">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $movie->name }}</h5>
                                 <p class="card-text">{{ $movie->duration }} phút</p>

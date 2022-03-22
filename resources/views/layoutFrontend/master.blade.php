@@ -10,38 +10,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-{{--    Boostrap CSS--}}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset("css/frontendcss/master/style.css")}}">
     {{-- Boostrap CSS --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
         integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset("css/frontendcss/master/style.css")}}">
+    <link rel="stylesheet" href="{{ asset('css/frontendcss/master/style.css') }}">
     @yield('head')
+    @toastr_css
 </head>
 
 <body>
-<header id="header">
-    <div id="header-img">
-        <img src="{{asset("img/frontend/cinemaLogo2.png")}}" alt="Cinema's Logo">
-    </div>
-    <nav id="nav-bar" class="navbar navbar-expand-lg">
-        <a class="nav-link" href="{{route('homepage')}}">Trang chủ</a>
-        <a class="nav-link" href="{{route('current.movie.index')}}">Phim</a>
-        <a class="nav-link" href="#games">Lịch phát hành</a>
-        <a class="nav-link" href="#buy">Buy</a>
-        <a class="nav-link" href="{{route('login')}}">Đăng nhập</a>
-    </nav>
-</header>
     <header id="header">
         <div id="header-img">
-            <img src="{{asset("img/frontend/cinemaLogo2.png")}}" alt="Cinema's Logo">
+            <img src="{{ asset('img/frontend/cinemaLogo2.png') }}" alt="Cinema's Logo">
         </div>
         <nav id="nav-bar" class="navbar navbar-expand-lg">
             <a class="nav-link" href="{{ route('homepage') }}">Trang chủ</a>
             <a class="nav-link" href="{{ route('current.movie.index') }}">Phim</a>
             <a class="nav-link" href="#games">Lịch phát hành</a>
-{{--            <a class="nav-link mr-2" href="#buy">Buy</a>--}}
+            <a class="nav-link" href="#buy">Buy</a>
+            <a class="nav-link" href="{{ route('login') }}">Đăng nhập</a>
+        </nav>
+    </header>
+    <header id="header">
+        <div id="header-img">
+            <img src="{{ asset('img/frontend/cinemaLogo2.png') }}" alt="Cinema's Logo">
+        </div>
+        <nav id="nav-bar" class="navbar navbar-expand-lg">
+            <a class="nav-link" href="{{ route('homepage') }}">Trang chủ</a>
+            <a class="nav-link" href="{{ route('current.movie.index') }}">Phim</a>
+            <a class="nav-link" href="#games">Lịch phát hành</a>
+            {{-- <a class="nav-link mr-2" href="#buy">Buy</a> --}}
             <div class="nav-item dropdown navbar-search col-1"><a class="nav-link dropdown-toggle hide"
                     data-toggle="dropdown" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                         fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -99,6 +97,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
     </script>
+    @jquery
+    @toastr_js
+    @toastr_render
 </body>
 
 </html>

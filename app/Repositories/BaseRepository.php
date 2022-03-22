@@ -11,7 +11,7 @@ abstract class BaseRepository implements BaseInterface
     public $table;
     public function __construct()
     {
-         $this->model = $this->getModel();
+        $this->model = $this->getModel();
         $this->table = $this->getTable();
     }
 

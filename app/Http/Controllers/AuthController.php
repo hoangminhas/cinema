@@ -44,6 +44,7 @@ class AuthController extends Controller
     {
         // dd($request);
         $this->userService->register($request);
+        toastr()->success("Register Success");
         return redirect()->route('login');
     }
 

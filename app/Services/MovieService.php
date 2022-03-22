@@ -49,6 +49,7 @@ class MovieService extends BaseService
         return $this->movieRepository->getById($id);
     }
 
+
     public function searchUser($request)
     {
         $today = \Carbon\Carbon::today('Asia/Ho_Chi_Minh')->format('Y-m-d');
